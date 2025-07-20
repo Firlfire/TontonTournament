@@ -1,0 +1,46 @@
+.team-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
+    row-gap: 20px;
+}
+
+.team {
+    /* width: 100px;  */
+    /* height: 20px;  */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    margin: 10px 0;
+    background: var(--team-bg-color);
+    color: white;
+    padding: 10px 10px 10px 20px;
+    border-radius: 20px;
+}
+
+.team .name {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+.team .members {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.team .points {
+    width: 50px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* .team:nth-child(2n) {
+    margin-bottom: 40px;
+} */

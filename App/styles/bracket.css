@@ -1,0 +1,96 @@
+#container {
+    display: flex;
+    
+    width: 800px;
+    height: 600px;
+}
+
+.fusion-wrapper {
+    border: red;
+    --team-gb-color-opacity: 0.5;
+    background-color: var(--team-gb-color);
+}
+
+.step, .connector, .line {
+    display: inline-block;
+}
+
+section { 
+    height: 520px; 
+}
+
+.connector {
+    width: 30px;
+}
+
+.connector div {
+    border: 1px solid #000;
+    border-left: none;
+    height: 50px;
+    width: 100%;
+    margin: 80px 0 0 1px;
+}
+
+.connector div:first-child {
+    margin: 32px 0 0 1px;
+}
+
+.line {
+    width: 30px;
+    height: 520px;
+}
+
+.line div {
+    border-top: 1px solid #000;
+    margin: 133px 0 0 1px;
+}
+
+.line div:first-child {
+    margin-top: 55px;
+}
+
+#step-2 > div {
+    margin-top: 91px;
+}
+
+#step-2 > div:first-child {
+    margin-top: 37px;
+}
+
+#conn-2 div {
+    margin-top: 133px;
+    height: 133px;
+}
+
+#conn-2 div:first-child {
+    margin-top: 57px;
+}
+
+#line2 div {
+    margin-top: 270px;
+}
+
+#line2 div:first-child {
+    margin-top: 125px;
+}
+
+#step-3 > div {
+    margin-top: 230px;
+}
+
+#step-3 > div:first-child {
+    margin-top: 105px;
+}
+
+#conn-3 div {
+    margin-top: 125px;
+    height: 270px
+}
+
+#line3 div {
+    margin-top: 270px;
+}
+
+#step-4 > div {
+    margin-top: 250px;
+}
