@@ -1,6 +1,7 @@
 class Popup {
-    constructor(title) {
+    constructor(title, message) {
         this.title = title;
+        this.message = message;
     }
 
     static GetContainer() {
@@ -26,6 +27,8 @@ class Popup {
 
         this.body = document.createElement("div");
         this.body.id = "body";
+        this.body.innerText = this.message;
+        this.container.appendChild(this.body);
 
         this._FillContent();
     }
@@ -36,22 +39,15 @@ class Popup {
 
     Open() {
         this.#BuildHTML();
-        this.container.classList.add("show");
+        this.container.show();
     }
 
     Close() {
-        this.container.classList.remove("show");
+        this.container.close();
     }
 }
 
 class PrankPopup extends Popup {
-    constructor(message, title) {
-        super(title);
-        this.message = message;
-    }
-
     _FillContent() {
-        const content = document.createElement("div");
-        content.innerText = this.message;
     }
 }
