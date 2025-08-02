@@ -1,6 +1,5 @@
 :root {
-    --team-gb-color-opacity: 1;
-    --team-bg-color: hsl(232, 19%, 54%, var(--team-gb-color-opacity));
+    --team-bg-color: hsl(232, 19%, 54%, var(--team-bg-color-opacity, 1));
 }
 
 #GlobalContainer {
