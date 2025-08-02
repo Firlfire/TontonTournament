@@ -23,7 +23,7 @@
     margin: 0 5px 0 5px;
 }
 
-.step > .label {
+.step>.label {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 13px;
     color: #2C7399;
@@ -63,9 +63,9 @@
 }
 
 .step .match:not(.connector-straight):nth-child(even)::after {
-  top: 53%;
-  bottom: 0%;
-  transform: scaleX(-1);
+    top: 53%;
+    bottom: 0%;
+    transform: scaleX(-1);
 }
 
 .step .match .connector.previous {

@@ -8,37 +8,65 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 250px; /* TODO : try to remove hard coded width */
-    border: 1px solid #000;
-    border-radius: 20px;
-    background: var(--team-bg-color);
-    color: white;
-    padding: 10px;
+    background-color: #403f4c;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
+    width: 300px;
+    height: 110px;
 }
 
 .team .name {
-    font-size: 16px;
     font-weight: bold;
-    text-align: center;
-    color: black;
-    text-decoration: underline;
-    margin-bottom: 5px;
+    margin: 0 !important;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #888;
+    padding-bottom: 0.4rem;
+    color: #ffc6ff;
 }
 
 .team .members {
-    white-space: nowrap;
-    align-self: stretch;
     display: flex;
-    justify-content: space-evenly;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    justify-content: space-between;
     column-gap: 10px;
-    margin-bottom: 5px;
-    font-size: 12px;
+    margin-top: 0.5rem;
+    color: azure;
 }
 
-.team .score {
-    width: 50px;
+.team .stats {
+    background: #1f1c2c;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border-radius: 8px;
     text-align: center;
-    margin: 0 auto;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #ffde7d;
+    justify-content: center;
+}
+
+.team .stats input[type="text"] {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #1f1c2c;
+    color: #ffde7d;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
+    outline: none;
+    transition: all 0.3s ease;
+    width: 25%;
+}
+
+/* Effet focus */
+.team .stats input[type="text"]:focus {
+    background-color: #29253a;
+    box-shadow: 0 0 0 2px #ffcbcb;
 }
 
 .connector {
