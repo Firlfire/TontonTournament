@@ -2,6 +2,18 @@
     --team-bg-color: hsl(232, 19%, 54%, var(--team-bg-color-opacity, 1));
 }
 
+html, body {
+    height: 100%;
+}
+
 #GlobalContainer {
     background-color: lightgrey;
+}
+
+#header {
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
 }

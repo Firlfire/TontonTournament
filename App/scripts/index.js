@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() { 
+document.addEventListener("DOMContentLoaded", function () {
     const container = document.querySelector("div#GlobalContainer #container");
 
     const teams = [
@@ -34,4 +34,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // const popup = new PrankPopup("TA MERE", "POUR NAOY");
     // popup.Open();
+
+    GetAllChampionsAndIcons();
 });
