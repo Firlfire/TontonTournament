@@ -21,30 +21,50 @@ document.addEventListener("DOMContentLoaded", function () {
     //     container.appendChild(html);
     // }
 
-    const lastElemement = document.querySelector(".step#step-3");
-
     const fusionStep = new FusionStep("Round 1");
-    const matchStep = new Step(1, false, "Round 2", 4);
+    const semiFinal = new Step(1, false, "Semi Final", 4);
+    const final = new Step(1, true, "Final", 2);
+    const Winners = new Step(1, false, "Semi Final 2", 1);
 
-    const fusionHtml = fusionStep.BuildHTML();
-    container.insertBefore(fusionHtml, lastElemement);
-    fusionHtml.addEventListener("step-end", () => {
+    const fusionStepHtml = fusionStep.BuildHTML();
+    container.appendChild(fusionStepHtml);
+    fusionStepHtml.addEventListener("step-end", () => {
         const stepWinners = fusionStep.GetWinners();
         console.log("STEP WINNERS");
         console.table(stepWinners);
         stepWinners.forEach(winners => {
-            matchStep.AddWinners(winners);
+            semiFinal.AddWinners(winners);
         });
-        matchStep.Start();
+        semiFinal.Start();
     });
 
-    const step2Html = matchStep.BuildHTML();
-    container.insertBefore(step2Html, lastElemement);
-    step2Html.addEventListener("step-end", () => {
-        const stepWinners = matchStep.GetWinners();
+    const semiFinalHtml = semiFinal.BuildHTML();
+    container.appendChild(semiFinalHtml);
+    semiFinalHtml.addEventListener("step-end", () => {
+        const stepWinners = semiFinal.GetWinners();
         console.log("STEP WINNERS");
         console.table(stepWinners);
+        stepWinners.forEach(winners => {
+            final.AddWinners(winners);
+        });
+        final.Start();
     });
+
+    const finalHtml = final.BuildHTML();
+    container.appendChild(finalHtml);
+    finalHtml.addEventListener("step-end", () => {
+        const stepWinners = final.GetWinners();
+        console.log("STEP WINNERS");
+        console.table(stepWinners);
+        stepWinners.forEach(winners => {
+            Winners.AddWinners(winners);
+        });
+        Winners.Start();
+    });
+
+    // TODO - Remove container style for winner
+    const winnerHtml = Winners.BuildHTML();
+    container.appendChild(winnerHtml);
 
     /**
      * Tournament start

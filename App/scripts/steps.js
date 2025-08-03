@@ -11,7 +11,7 @@ class Step {
         this.matchWinnerCount = winnerCount ?? 1;
         this.straightConnector = straightConnector ?? false;
         this.stepLabel = stepLabel;
-        this.matchLabel = "Round";
+        this.matchLabel = "Match";
         this.teams = new Array(teamsCount).fill({ name: null, members: ["", ""]});
     }
 
