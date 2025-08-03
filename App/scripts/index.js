@@ -21,16 +21,36 @@ document.addEventListener("DOMContentLoaded", function () {
     //     container.appendChild(html);
     // }
 
-    const fusionStep = new FusionStep("Round 1");
-    teams.forEach(team => {
-        fusionStep.AddTeam(team)
-    });
+    const lastElemement = document.querySelector(".step#step-3");
 
-    const fusionHtml = fusionStep.GetHTML();
+    const fusionStep = new FusionStep("Round 1");
+    const matchStep = new Step(2, false, "Round 2", 4);
+
+    const fusionHtml = fusionStep.BuildHTML();
+    container.insertBefore(fusionHtml, lastElemement);
     fusionHtml.addEventListener("step-end", () => {
         const stepWinners = fusionStep.GetWinners();
         console.table(stepWinners);
+        stepWinners.forEach(winner => {
+            matchStep.AddTeam(winner);
+        });
+        matchStep.Start();
     });
+
+    const step2Html = matchStep.BuildHTML();
+    container.insertBefore(step2Html, lastElemement);
+    step2Html.addEventListener("step-end", () => {
+        const stepWinners = step2Html.GetWinners();
+        console.table(stepWinners);
+    });
+
+    /**
+     * Tournament start
+     */
+    teams.forEach(team => {
+        fusionStep.AddTeam(team);
+    });
+    fusionStep.Start();
 
     // const popup = new PrankPopup("TA MERE", "POUR NAOY");
     // popup.Open();

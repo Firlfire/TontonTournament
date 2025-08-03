@@ -1,3 +1,7 @@
+.step:not(.active) .team .name, .step:not(.active) .team .members > span {
+    color: transparent;
+}
+
 .team {
     display: flex;
     align-items: center;

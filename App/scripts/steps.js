@@ -1,9 +1,12 @@
 class Step {
-    constructor(container, winnerCount, straightConnector, stepLabel) {
-        this.container = container;
+    static totalCount = 0;
+
+    constructor(winnerCount, straightConnector, stepLabel, teamsCount) {
         this.winnerCount = winnerCount;
         this.straightConnector = straightConnector ?? false;
         this.stepLabel = stepLabel;
+        this.matchLabel = "Round";
+        this.teams = new Array(teamsCount).fill({ name: null, members: ["", ""]});
     }
 
     //#region abstract members
@@ -14,11 +17,26 @@ class Step {
     //#endregion abstract members
 
     AddTeam(team) {
-        if (!this.teams) {
-            this.teams = [];
+        const firstEmptySlotIndex = this.teams.findIndex(team => !team.name);
+        if (Number.isInteger(firstEmptySlotIndex) && firstEmptySlotIndex > -1) {
+            this.teams[firstEmptySlotIndex] = team;
         }
+        else {
+            throw new Error("All team slot are already occupied");
+        }
+    }
 
-        this.teams.push(team);
+    BuildContainer() {
+        if (!this.container)
+        {
+            this.container = document.createElement("section");
+            this.container.classList.add("step");
+            this.container.id = `step-${++Step.totalCount}`
+        }
+        else
+        {
+            this.container.innerHTML = "";
+        }
     }
 
     BuildMatchHTML(match) {
@@ -38,11 +56,15 @@ class Step {
         return html;
     }
 
+    BuildParticipantHTML(team) {
+        return this.BuildTeamHTML(team);
+    }
+
     BuildTeamHTML(teamData) {
         const template = document.querySelector("#team-template").content.cloneNode(true);
         const html = template.querySelector(".team");
         const name = html.querySelector(".name");
-        name.innerText = teamData.name;
+        name.innerText = teamData.name || "&nbsp;";
 
         const input = html.querySelector(".score");
         input.addEventListener("change", () => {
@@ -54,7 +76,7 @@ class Step {
 
         html.querySelector(".members").append(...teamData.members.map(name => {
             const element = document.createElement("span");
-            element.innerText = name;
+            element.innerText = name || "&nbsp;";
             return element;
         }));
 
@@ -69,8 +91,8 @@ class Step {
         });
     }
 
-    GetHTML() {
-        this.container.innerHTML = "";
+    BuildHTML() {
+        this.BuildContainer();
 
         const label = document.createElement("div");
         label.className = "label";
@@ -84,44 +106,72 @@ class Step {
             this.container.appendChild(matchHtml);
         });
         
-        this.container.addEventListener("scoreChange", teamData => {
-            console.log(`Catch Event 'scoreChange', isEnded = ${this.IsStepEnded()}`);
-            console.log(`TeamData: ${teamData}`);
-            if (this.IsStepEnded()) {
-                const winners = this.GetWinners();
-                const event = this.BuildEvent("step-end", {winners})
-                this.container.dispatchEvent(event);
-            }
-        });
+        if (!this.initialized)
+        {
+            this.container.addEventListener("scoreChange", teamData => {
+                console.log(`Catch Event 'scoreChange', isEnded = ${this.IsStepEnded()}`);
+                console.log(`TeamData: ${teamData}`);
+                if (this.IsStepEnded()) {
+                    const winners = this.GetWinners();
+                    const event = this.BuildEvent("step-end", {winners})
+                    this.container.dispatchEvent(event);
+                }
+            });
+        }
 
+        this.initialized = true;
         return this.container;
     }
 
     GetMatches() {
-        // TODO - Implements for standard match (not fusion)
+        const teams = this.GetTeams();
+
+        const matchCount = teams.length / 2;
+        const matches = [];
+        
+        while (matches.length < matchCount) {
+            const match = {
+                title: `${this.matchLabel} ${matches.length + 1}`,
+                teams : teams.splice(0, 2)
+            };
+
+            matches.push(match);
+        }
+
+        return matches;
     }
 
     GetTeams() {
-        return this.teams;
+        return Array.from(this.teams);
     }
 
     GetWinners() {
         if (this.IsStepEnded())
         {
             // TODO - handle tie
-            return this.teams.sort((team1, team2) => team2.score - team1.score).slice(0, this.winnerCount);
+            // TODO - group by matches
+            const winners = this.teams.sort((team1, team2) => team2.score - team1.score).slice(0, this.winnerCount);
+            // prevent to pass scrore and other data to next step
+            return winners.map(winner => ({ name: winner.name, members: winner.members }));
         }
     }
 
     IsStepEnded() {
         return this.teams.every(team  => !!team.score || team.score === 0);
     }
+
+    Start() {
+        // TODO - Better than rebuild whole HTML;
+        this.BuildHTML();
+        this.started = true;
+        this.container.classList.add("active");
+    }
 }
 
 class FusionStep extends Step {
     constructor(stepLabel) {
-        const container = document.querySelector(".step#step-1");
-        super(container, 4, true, stepLabel);
+        super(4, true, stepLabel, 8);
+        this.matchLabel = "Fusion";
     }
 
     //#region abstract members
@@ -139,33 +189,13 @@ class FusionStep extends Step {
     //#endregion abstract members
 
     //#region overriden members
-    GetMatches() {
-        if (!this.matches) {
-            const teams = this.GetTeams();
-
-            const matchCount = teams.length / 2;
-            this.matches = [];
-            
-            while (this.matches.length < matchCount) {
-                const match = {
-                    title: `Fusion ${this.matches.length + 1}`,
-                    teams : teams.splice(0, 2)
-                };
-
-                this.matches.push(match);
-            }
-        }
-
-        return this.matches;
-    }
-
     // Replaced by 'GetMatches'
     GetTeams() {
-        if (!this.fusionnedTeams) {
+        if (!this.started || (!this.fusionnedTeams && this.teams)) {
             const fusionCount = this.teams.length / 2;
             this.fusionnedTeams = [];
 
-            const duplicateTeams = Array.from(this.teams);
+            const duplicateTeams = super.GetTeams();
             // const shuffledTeams = Array.from(this.teams).sort( () => Math.random());
 
             while (this.fusionnedTeams.length < fusionCount) {
@@ -184,7 +214,7 @@ class FusionStep extends Step {
             }
         }
 
-        return this.fusionnedTeams;
+        return this.fusionnedTeams || [];
     }
     //#endregion abstract members
 
