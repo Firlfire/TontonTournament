@@ -12,67 +12,41 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: 8, name: "D'autre randoms", members: ["Random 1", "Random 2"] },
     ];
 
-    // const steps = [
-    //     new FusionStep(),
-    // ];
+    const steps = [
+        new FusionStep("Round 1"),
+        new Step(1, false, "Semi Final", 4),
+        new Step(1, true, "Final", 2),
+        
+        // TODO - Remove container style + connector
+        new Step(1, false, "Winners", 1)
+    ];
 
-    // for (const step of steps) {
-    //     const html = step.GetHTML();
-    //     container.appendChild(html);
-    // }
+    steps.forEach((step, index) => {
+        const stepHtml = step.BuildHTML();
+        container.appendChild(stepHtml);
+        const nextStep = steps[index + 1];
+        
+        if (nextStep) {
+            stepHtml.addEventListener("step-end", () => {
+                const stepWinners = step.GetWinners();
+                console.log("STEP WINNERS");
+                console.table(stepWinners);
 
-    const fusionStep = new FusionStep("Round 1");
-    const semiFinal = new Step(1, false, "Semi Final", 4);
-    const final = new Step(1, true, "Final", 2);
-    const Winners = new Step(1, false, "Semi Final 2", 1);
-
-    const fusionStepHtml = fusionStep.BuildHTML();
-    container.appendChild(fusionStepHtml);
-    fusionStepHtml.addEventListener("step-end", () => {
-        const stepWinners = fusionStep.GetWinners();
-        console.log("STEP WINNERS");
-        console.table(stepWinners);
-        stepWinners.forEach(winners => {
-            semiFinal.AddWinners(winners);
-        });
-        semiFinal.Start();
+                stepWinners.forEach(winners => {
+                    nextStep.AddWinners(winners);
+                });
+                nextStep.Start();
+            });
+        }
     });
-
-    const semiFinalHtml = semiFinal.BuildHTML();
-    container.appendChild(semiFinalHtml);
-    semiFinalHtml.addEventListener("step-end", () => {
-        const stepWinners = semiFinal.GetWinners();
-        console.log("STEP WINNERS");
-        console.table(stepWinners);
-        stepWinners.forEach(winners => {
-            final.AddWinners(winners);
-        });
-        final.Start();
-    });
-
-    const finalHtml = final.BuildHTML();
-    container.appendChild(finalHtml);
-    finalHtml.addEventListener("step-end", () => {
-        const stepWinners = final.GetWinners();
-        console.log("STEP WINNERS");
-        console.table(stepWinners);
-        stepWinners.forEach(winners => {
-            Winners.AddWinners(winners);
-        });
-        Winners.Start();
-    });
-
-    // TODO - Remove container style for winner
-    const winnerHtml = Winners.BuildHTML();
-    container.appendChild(winnerHtml);
 
     /**
      * Tournament start
      */
     teams.forEach(team => {
-        fusionStep.AddTeam(team);
+        steps[0].AddTeam(team);
     });
-    fusionStep.Start();
+    steps[0].Start();
 
     // const popup = new PrankPopup("TA MERE", "POUR NAOY");
     // popup.Open();
