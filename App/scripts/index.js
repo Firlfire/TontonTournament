@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
         new FusionStep("Round 1"),
         new Step(1, false, "Semi Final", 4),
         new Step(1, true, "Final", 2),
-        
-        // TODO - Remove container style + connector
         new Step(1, false, "Winners", 1)
     ];
 

@@ -23,7 +23,7 @@
     margin: 0 5px 0 5px;
 }
 
-.step>.label {
+.step > .label {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 13px;
     color: #2C7399;
@@ -31,15 +31,15 @@
     text-align: center;
 }
 
-.step .match {
+.step:not(:last-child) .match {
     padding: 5px;
     border: black solid 3px;
 
     position: relative;
 }
 
-.step .match:nth-child(odd)::after,
-.step .match:nth-child(even)::after {
+.step:not(:last-child) .match:nth-child(odd)::after,
+.step:not(:last-child) .match:nth-child(even)::after {
     content: "";
     position: absolute;
     left: 100%;
@@ -49,8 +49,8 @@
     background: linear-gradient(black, black) center /3px 100%;
 }
 
-.step .match:not(.connector-straight):nth-child(odd)::after,
-.step .match:not(.connector-straight):nth-child(even)::after {
+.step:not(:last-child) .match:not(.connector-straight):nth-child(odd)::after,
+.step:not(:last-child) .match:not(.connector-straight):nth-child(even)::after {
     content: "";
     position: absolute;
     top: 0;
@@ -62,23 +62,10 @@
     background-repeat: no-repeat;
 }
 
-.step .match:not(.connector-straight):nth-child(even)::after {
+.step:not(:last-child) .match:not(.connector-straight):nth-child(even)::after {
     top: 53%;
     bottom: 0%;
     transform: scaleX(-1);
-}
-
-.step .match .connector.previous {
-    height: 3px;
-    width: 25px;
-    background-color: black;
-    position: absolute;
-    top: 53%;
-    right: 100%;
-}
-
-.step .match .connector.previous {
-    display: none;
 }
 
 .step .match .label {
@@ -87,13 +74,17 @@
     border-bottom: black solid 2px;
 }
 
+.step:last-child .match .label {
+    display: none;
+}
+
 .step .match .participants {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
 }
 
-.step .match .participants:not(:has(.fusion-wrapper)) {
+.step:not(:last-child) .match .participants:not(:has(.fusion-wrapper)) {
     padding: 10px;
     row-gap: 30px;
 }
