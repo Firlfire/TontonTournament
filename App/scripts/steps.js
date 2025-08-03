@@ -1,8 +1,14 @@
+const events = {
+    Score: "score-change",
+    MatchEnd: "match-end",
+    StepEnd: "step-end"
+}
+
 class Step {
     static totalCount = 0;
 
     constructor(winnerCount, straightConnector, stepLabel, teamsCount) {
-        this.winnerCount = winnerCount;
+        this.matchWinnerCount = winnerCount ?? 1;
         this.straightConnector = straightConnector ?? false;
         this.stepLabel = stepLabel;
         this.matchLabel = "Round";
@@ -24,6 +30,12 @@ class Step {
         else {
             throw new Error("All team slot are already occupied");
         }
+    }
+
+    AddWinners(winners) {
+        winners.forEach(winner => {
+            this.AddTeam(winner);
+        });
     }
 
     BuildContainer() {
@@ -53,6 +65,19 @@ class Step {
 
         html.querySelector(".participants").append(...match.teams.map(team => this.BuildParticipantHTML(team)));
         
+        html.addEventListener(events.Score, () => {
+            const winners = this.GetMatchWinners(match);
+            console.log(`Catch Event <${events.Score}>`);
+            if (winners && winners.length)
+            {
+                console.table(winners);
+                // prevent to pass scrore and other data to next step
+                match.winners = winners.map(winner => ({ name: winner.name, members: winner.members }));
+                const customEvent = this.BuildEvent(events.MatchEnd);
+                html.dispatchEvent(customEvent);
+            }
+        });
+        
         return html;
     }
 
@@ -68,9 +93,9 @@ class Step {
 
         const input = html.querySelector(".score");
         input.addEventListener("change", () => {
-            console.log(`Team score change : ${teamData.score} => ${input.value}`);
+            console.log(`Score change for team '${teamData.name}' : ${teamData.score} => ${input.value}`);
             teamData.score = input.value;
-            const customEvent = this.BuildEvent("scoreChange", { teamData: teamData });
+            const customEvent = this.BuildEvent(events.Score, { teamData: teamData });
             input.dispatchEvent(customEvent);
         });
 
@@ -83,10 +108,10 @@ class Step {
         return html;
     }
 
-    BuildEvent(eventName, data)
+    BuildEvent(eventName, data, bubbles)
     {
         return new CustomEvent(eventName, {
-            bubbles: true,
+            bubbles: bubbles ?? true,
             detail: data,
         });
     }
@@ -99,21 +124,20 @@ class Step {
         label.innerText = this.stepLabel;
         this.container.appendChild(label);
 
-        const matches = this.GetMatches();
-
-        matches.forEach((match) => {
+        this.matches = this.GetMatches();
+        this.matches.forEach((match) => {
             const matchHtml = this.BuildMatchHTML(match);
             this.container.appendChild(matchHtml);
         });
         
         if (!this.initialized)
         {
-            this.container.addEventListener("scoreChange", teamData => {
-                console.log(`Catch Event 'scoreChange', isEnded = ${this.IsStepEnded()}`);
-                console.log(`TeamData: ${teamData}`);
+            this.container.addEventListener(events.MatchEnd, teamData => {
+                console.log(`Catch Event <${events.MatchEnd}>, isStepEnded = ${this.IsStepEnded()}`);
+                console.log(`TeamData: ${JSON.stringify(teamData)}`);
                 if (this.IsStepEnded()) {
                     const winners = this.GetWinners();
-                    const event = this.BuildEvent("step-end", {winners})
+                    const event = this.BuildEvent(events.StepEnd, {winners})
                     this.container.dispatchEvent(event);
                 }
             });
@@ -148,16 +172,20 @@ class Step {
     GetWinners() {
         if (this.IsStepEnded())
         {
-            // TODO - handle tie
-            // TODO - group by matches
-            const winners = this.teams.sort((team1, team2) => team2.score - team1.score).slice(0, this.winnerCount);
-            // prevent to pass scrore and other data to next step
-            return winners.map(winner => ({ name: winner.name, members: winner.members }));
+            return this.matches.map(match => match.winners);
         }
     }
 
+    GetMatchWinners(match) {
+        // TODO - handle tie
+        if (match.teams.every(team => !!team.score)) {
+            return match.teams.sort((team1, team2) => team2.score - team1.score).slice(0, this.matchWinnerCount)
+        }
+        return null;
+    }
+
     IsStepEnded() {
-        return this.teams.every(team  => !!team.score || team.score === 0);
+        return this.matches.every(match  => !!match.winners);
     }
 
     Start() {
@@ -170,7 +198,7 @@ class Step {
 
 class FusionStep extends Step {
     constructor(stepLabel) {
-        super(4, true, stepLabel, 8);
+        super(2, true, stepLabel, 8);
         this.matchLabel = "Fusion";
     }
 
@@ -216,7 +244,13 @@ class FusionStep extends Step {
 
         return this.fusionnedTeams || [];
     }
-    //#endregion abstract members
+
+    GetMatchWinners(match) {
+        return super.GetMatchWinners({
+            teams: match.teams.flat()
+        });
+    }
+    //#endregion overriden members
 
     BuildFusionHTML(teams) {
         const template = document.querySelector("#fusion-template").content.cloneNode(true);

@@ -24,15 +24,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const lastElemement = document.querySelector(".step#step-3");
 
     const fusionStep = new FusionStep("Round 1");
-    const matchStep = new Step(2, false, "Round 2", 4);
+    const matchStep = new Step(1, false, "Round 2", 4);
 
     const fusionHtml = fusionStep.BuildHTML();
     container.insertBefore(fusionHtml, lastElemement);
     fusionHtml.addEventListener("step-end", () => {
         const stepWinners = fusionStep.GetWinners();
+        console.log("STEP WINNERS");
         console.table(stepWinners);
-        stepWinners.forEach(winner => {
-            matchStep.AddTeam(winner);
+        stepWinners.forEach(winners => {
+            matchStep.AddWinners(winners);
         });
         matchStep.Start();
     });
@@ -40,7 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const step2Html = matchStep.BuildHTML();
     container.insertBefore(step2Html, lastElemement);
     step2Html.addEventListener("step-end", () => {
-        const stepWinners = step2Html.GetWinners();
+        const stepWinners = matchStep.GetWinners();
+        console.log("STEP WINNERS");
         console.table(stepWinners);
     });
 
