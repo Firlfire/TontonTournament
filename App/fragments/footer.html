@@ -1,8 +1,14 @@
-<style>
-    #titleFragmentFooter {
-        font-size: 18px;
-    }
-</style>
-<footer>
-    <h1 id="titleFragmentFooter">Y'a un gaylord parmi nous</h1>
+<head>
+    <!-- https://anjitpariyar.medium.com/make-iframe-height-dynamic-based-on-content-inside-using-javascript-c675e78e4dd3 -->
+    <script>
+        // Call the function when the iframe content is loaded
+        window.onload = function sendHeightToParent() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({ type: 'adjustElementHeight', height: height, containerId: "footerFrame" }, '*');
+        };
+    </script>
+</head>
+<footer class="footer">
+    <link rel="stylesheet" href="../styles/global.css">
+    <h1>Y'a un gaylord parmi nous</h1>
 </footer>

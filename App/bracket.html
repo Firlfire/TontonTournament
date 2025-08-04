@@ -15,6 +15,8 @@
 </head>
 
 <body>
+    <iframe name="headerFrame" id="headerFrame" src="fragments/header.html" frameborder="0" cellspacing="0"></iframe>
+
     <div id="GlobalContainer">
         <template id="step-template">
             <section class="step">
@@ -39,7 +41,7 @@
                 <div class="members"></div>
                 <div class="stats">
                     <label for="score" class="input">Points</label>
-                    <input type="text" class="score">
+                    <input name="score" type="text" class="score">
                 </div>
             </div>
         </template>
@@ -47,6 +49,8 @@
         <article id="container"></section>
         </article>
     </div>
+    
+    <iframe name="footerFrame" id="footerFrame" src="fragments/footer.html" frameborder="0" cellspacing="0"></iframe>
 </body>
 
 </html>

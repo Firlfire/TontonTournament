@@ -20,3 +20,17 @@ function GetAllChampionsAndIcons() {
         })
         .catch(err => console.error(err));
 }
+
+function ReceiveMessage(event) {
+    
+    const origin = event.origin || ''
+    // For Chrome, the origin property is in the event.originalEvent object.
+    // console.log('recceived message', event.data)
+    console.warn("GOT EVENT FROM" + origin);
+    if (origin !== "null") return;
+
+    if (event.data.type === 'adjustElementHeight') {
+        const element = document.getElementById(event.data.containerId);
+        element.style.height = `${event.data.height}px`;
+    }
+}

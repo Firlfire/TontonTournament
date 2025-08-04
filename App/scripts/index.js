@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+    window.addEventListener('message', ReceiveMessage, false);
+
     const container = document.querySelector("div#GlobalContainer #container");
 
     const teams = [
