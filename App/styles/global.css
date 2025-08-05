@@ -1,14 +1,26 @@
 :root {
-    --team-bg-color: hsl(232, 19%, 54%, var(--team-bg-color-opacity, 1));
+    /* --team-bg-color: hsl(232, 19%, 54%, var(--team-bg-color-opacity, 1)); */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
 }
 
 #GlobalContainer {
-    background-color: lightgrey;
+    /* background-color: lightgrey; */
+}
+
+.image-container {
+    position: absolute;
+    top: 500px;
+    text-align: center;
 }
 
 /* HEADER */
 #headerFrame {
     width: 100%;
+    height: 100%;
 }
 
 .header h1 {

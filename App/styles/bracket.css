@@ -34,7 +34,6 @@
 .step:not(:last-child) .match {
     padding: 5px;
     border: black solid 3px;
-
     position: relative;
 }
 

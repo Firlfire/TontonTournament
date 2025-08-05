@@ -1,38 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Fusion</title>
-        <link rel="stylesheet" href="./styles/index.css">
-        <script src="./scripts/steps.js"></script>
-        <link rel="stylesheet" href="./styles/global.css">
-        <script src="./scripts/index.js"></script>
-    </head>
-    <body>
-        <div id="header">
-            <object type="text/html" data="fragments/header.html" width="100%" height="100%"></object>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fusion</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <script src="./scripts/steps.js"></script>
+    <link rel="stylesheet" href="./styles/global.css">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Herr+Von+Muellerhoff' rel='stylesheet'
+        type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web|Roboto+Condensed:700' rel='stylesheet'
+        type='text/css'>
+
+    <!-- <script src="./scripts/tournamentManager.js"></script> -->
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/tools.js"></script>
+</head>
+
+<body>
+    <div id="header">
+        <object type="text/html" data="fragments/header.html" width="100%" height="100%"></object>
+    </div>
+
+    <div id="GlobalContainer">
+        <template id="fusion-template">
+            <div class="fusionWrapper">
+                <label></label>
+            </div>
+        </template>
+        <template id="team-template">
+            <div class="team">
+                <div id="name"></div>
+            </div>
+        </template>
+
+
+        <div class="image-container">
+            <img src="./assets/Affiche_du_KS.png" alt="Affiche_du_KS" />
         </div>
 
-        <div id="GlobalContainer">
-            <template id="fusion-template">
-                <div class="fusionWrapper">
-                    <label></label>
-                </div>
-            </template>
-            <template id="team-template">
-                <div class="team">
-                    <div id="name"></div>
-                </div>
-            </template>
-            
-            <div id="FirstStep">
-                <h1>LA MERE A NAOY</h1>
-                <div class="team-list"></div>
-            </div>
-        </div>
-        <div id="footer">
-            <object type="text/html" data="fragments/footer.html" width="100%" height="100%"></object>
-        </div>
-        <script src="./scripts/includes.js"></script>
-    </body>
+        <!-- <div class="subtitle">
+            Avec la participation de <strong>CHOKO Phi</strong> – <span style="color:#a00;">!Bagarre !</span>
+        </div> -->
+    </div>
+
+    <div id="FirstStep">
+        <h1>LA MERE A NAOY</h1>
+            <div class="team-list"></div>
+    </div>
+    <!-- <div id="footer">
+        <object type="text/html" data="fragments/footer.html" width="100%" height="100%"></object>
+    </div> -->
+    <script src="./scripts/includes.js"></script>
+</body>
+
 </html>
