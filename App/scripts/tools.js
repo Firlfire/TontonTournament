@@ -22,11 +22,10 @@ function GetAllChampionsAndIcons() {
 }
 
 function ReceiveMessage(event) {
-    
     const origin = event.origin || ''
     // For Chrome, the origin property is in the event.originalEvent object.
     // console.log('recceived message', event.data)
-    console.warn("GOT EVENT FROM" + origin);
+    console.log(`Message from ${origin} with data ${JSON.stringify(event.data)}`);
     if (origin !== "null") return;
 
     if (event.data.type === 'adjustElementHeight') {
