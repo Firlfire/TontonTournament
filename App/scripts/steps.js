@@ -4,9 +4,98 @@ const events = {
     StepEnd: "step-end"
 }
 
-class Step {
-    static totalCount = 0;
+const StepDatas = {
+    teams: [
+        { id: 1, name: "Les pires...", members: ["Tonton NaoyTV", "Tonton W31lon"] },
+        { id: 2, name: "Les devs", members: ["Tonton Dodger", "Tonton SeinQ"] },
+        { id: 3, name: "Les antagonistes", members: ["Tonton Thirty", "Tonton Wick"] },
+        { id: 4, name: "Les Random", members: ["CHOKO LA RANDOM", "UN AUTRE RANDOM"] },
+        { id: 5, name: "D'autre randoms", members: ["Random 1", "Random 2"] },
+        { id: 6, name: "D'autre randoms", members: ["Random 1", "Random 2"] },
+        { id: 7, name: "D'autre randoms", members: ["Random 1", "Random 2"] },
+        { id: 8, name: "D'autre randoms", members: ["Random 1", "Random 2"] },
+    ]
+}
 
+class HtmlBuilder {
+    static GetStep(labelText) {
+        if (!HtmlBuilder.step)
+        {
+            HtmlBuilder.step = document.createElement("section");
+            HtmlBuilder.step.className = "step";
+         
+            const label = document.createElement("div");
+            label.className = "label";
+            label.innerText = labelText;
+            HtmlBuilder.step.appendChild(label);
+        }
+
+        return HtmlBuilder.step.cloneNode(true);
+    }
+
+    static GetMatch() {
+        if (!HtmlBuilder.match)
+        {
+            HtmlBuilder.match = document.createElement("div");
+            HtmlBuilder.match.className = "match";
+         
+            const label = document.createElement("div");
+            label.className = "label";
+            HtmlBuilder.match.appendChild(label);
+         
+            const participants = document.createElement("div");
+            participants.className = "participants";
+            HtmlBuilder.match.appendChild(participants);
+        }
+
+        return HtmlBuilder.match.cloneNode(true);
+    }
+
+    static GetFusionWrapper() {
+        if (!HtmlBuilder.fusion)
+        {
+            HtmlBuilder.fusion = document.createElement("div");
+            HtmlBuilder.fusion.className = "fusion-wrapper";
+        }
+
+        return HtmlBuilder.fusion.cloneNode(true);
+    }
+
+    static GetTeam() {
+        if (!HtmlBuilder.team)
+        {
+            HtmlBuilder.team = document.createElement("div");
+            HtmlBuilder.team.className = "team";
+
+            const name = document.createElement("h3");
+            name.className = "name";
+            HtmlBuilder.team.appendChild(name);
+
+            const members = document.createElement("div");
+            members.className = "members";
+            HtmlBuilder.team.appendChild(members);
+
+            const stats = document.createElement("div");
+            stats.className = "stats";
+            HtmlBuilder.team.appendChild(stats);
+
+            const label = document.createElement("label");
+            label.for = "score";
+            label.innerText = "Points"
+            stats.appendChild(label);
+
+            const score = document.createElement("input");
+            score.className = "score";
+            score.type = "text";
+            stats.appendChild(score);
+        }
+
+        return HtmlBuilder.team.cloneNode(true);
+    }
+}
+
+// TODO - Register/Load tournament data in LocalStorage
+class Step {
     constructor(winnerCount, straightConnector, stepLabel, teamsCount) {
         this.matchWinnerCount = winnerCount ?? 1;
         this.straightConnector = straightConnector ?? false;
@@ -30,19 +119,17 @@ class Step {
     BuildContainer() {
         if (!this.container)
         {
-            this.container = document.createElement("section");
-            this.container.classList.add("step");
-            this.container.id = `step-${++Step.totalCount}`
+            this.container = HtmlBuilder.GetStep(this.stepLabel);
         }
         else
         {
-            this.container.innerHTML = "";
+            // TODO - Better way to Reset match data without Rebuild whole dom
+            this.container.replaceChildren(this.container.firstChild);
         }
     }
 
     BuildMatchHTML(match) {
-        const template = document.querySelector("#match-template").content.cloneNode(true);
-        const html = template.querySelector(".match");
+        const html = HtmlBuilder.GetMatch();
 
         if (this.straightConnector)
         {
@@ -75,8 +162,7 @@ class Step {
     }
 
     BuildTeamHTML(teamData) {
-        const template = document.querySelector("#team-template").content.cloneNode(true);
-        const html = template.querySelector(".team");
+        const html = HtmlBuilder.GetTeam();
         const name = html.querySelector(".name");
         name.innerText = teamData.name || "&nbsp;";
 
@@ -107,11 +193,6 @@ class Step {
 
     BuildHTML() {
         this.BuildContainer();
-
-        const label = document.createElement("div");
-        label.className = "label";
-        label.innerText = this.stepLabel;
-        this.container.appendChild(label);
 
         this.matches = this.GetMatches();
         this.matches.forEach((match) => {
@@ -205,8 +286,7 @@ class FusionStep extends Step {
 
     //#region abstract members
     BuildParticipantHTML(participants) {
-        const template = document.querySelector("#fusion-template").content.cloneNode(true);
-        const html = template.querySelector(".fusion-wrapper");
+        const html = HtmlBuilder.GetFusionWrapper();
 
         for (const team of participants) {
             const teamHtml = this.BuildTeamHTML(team);
