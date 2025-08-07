@@ -1,8 +1,31 @@
 # Pages :
-## Regles + Récompenses
-## Liste des teams
-## Bracket
+## Accueil : attente sur le stream avant de lancer l'event
+- Le 'header' sur toute la page
+- OU (si spoil de la map avant les regles) une image de la map ARAM en fond
+    + titres du Header [sans le fond noir]
 
+==> (fond + contenu)
+
+## Regles + Récompenses + Liste des teams
+### [Maxime] Layout colonne
+- Colonne 1 : Regles a gauche avec alternance images/texte
+- Colonne 2 :
+    - Déroulement (étapes) en haut et en sous-colonne
+    - Récompense en dessous
+- en dessous : liste des équipe
+
+### [Val] Layout scroll
+- Les regles
+- Puis le déroulement
+- Les récompense
+- Puis les teams
+
+### [] 'Dynamique'
+- Afficher chaque section en cliquant dessus
+
+==> (fond + contenu)
+
+## Bracket
 Step 1 : Fusion
 - Clique 'Randomize' pour les Fusions sur page Bracket
     - Affichage des "Fusions"
@@ -17,3 +40,38 @@ Step 3 : Deux duos gagnant
 
 Bonus :
 - Selection des champions choisie : affichage auto des recompenses spéciales gagnées (pick de Main Champion)
+
+
+http://fr.123rf.com/ai-image-generator/
+    Timer de 20 minutes dans un style qui mélange fun, jeu vidéo et bagarre
+
+# TODO
+## index.html
+- Header au centre
+- Bouton vers main-page.html : style 'Match found' sur LoL
+## main page
+- Header un peu moins haut
+- HTML :
+    - Bouton a gauche
+        - 1 par 'section' : affiche le contenu a droite
+        - 1 pour aller sur la page du Bracket
+    - Section a affichées
+        - Regles
+        - Déroulement
+        - Récompenses
+        - Teams (cf screen dans la conversation)
+- code bouton sur le côté (affichage de la bonne section)
+## bracket
+- Afficher la step suivante a la fin de la step d'avant
+- Style specifique pour la team des Winners dans la bracket
+- Couleur traits bracet dorée (couleur a revoir au dernier point avant le tournoi)
+- Sauvegarder/Get data depuis le localStorage (supporter le F5)
+## Global
+- Merger index.html et main-page.html (et bracket.html ?)
+- index.html doit avoir un 'big' header
+- Faire démarrer l'image de fond sous le headeur
+
+# TODO
+- Réfléchir aux différents texte a afficher
+- Filer l'image du papyrus
+- Images de skin en .png ou .svg
