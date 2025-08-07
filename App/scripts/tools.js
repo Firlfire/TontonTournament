@@ -33,3 +33,8 @@ function ReceiveMessage(event) {
         element.style.height = `${event.data.height}px`;
     }
 }
+
+/***** common page start-up *****/
+document.addEventListener("DOMContentLoaded", function () {
+    window.addEventListener('message', ReceiveMessage, false);
+});
