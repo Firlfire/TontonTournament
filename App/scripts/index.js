@@ -29,11 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const stepWinners = step.GetWinners();
                 console.log("STEP WINNERS");
                 console.table(stepWinners);
-
-                stepWinners.forEach(winners => {
-                    nextStep.AddWinners(winners);
-                });
-                nextStep.Start();
+                nextStep.Start(stepWinners);
             });
         }
     });

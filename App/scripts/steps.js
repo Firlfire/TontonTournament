@@ -11,18 +11,13 @@ class Step {
         this.matchWinnerCount = winnerCount ?? 1;
         this.straightConnector = straightConnector ?? false;
         this.stepLabel = stepLabel;
-        this.matchLabel = "Match";
+        this.matchLabel = "Demi-Final"; // ou final pour la final
+        // TODO - Refacto intialization : without fake data - no need if step display one after one
         this.teams = new Array(teamsCount).fill({ name: null, members: ["", ""]});
     }
 
-    //#region abstract members
-    // Return HTMLElement to show
-    GetParticipantsHTML() {
-        throw "Not Implemented";
-    }
-    //#endregion abstract members
-
     AddTeam(team) {
+        // TODO - Refacto intialization : without fake data
         const firstEmptySlotIndex = this.teams.findIndex(team => !team.name);
         if (Number.isInteger(firstEmptySlotIndex) && firstEmptySlotIndex > -1) {
             this.teams[firstEmptySlotIndex] = team;
@@ -30,12 +25,6 @@ class Step {
         else {
             throw new Error("All team slot are already occupied");
         }
-    }
-
-    AddWinners(winners) {
-        winners.forEach(winner => {
-            this.AddTeam(winner);
-        });
     }
 
     BuildContainer() {
@@ -147,6 +136,7 @@ class Step {
         return this.container;
     }
 
+    // TODO - Randomize participants
     GetMatches() {
         const teams = this.GetTeams();
 
@@ -172,7 +162,7 @@ class Step {
     GetWinners() {
         if (this.IsStepEnded())
         {
-            return this.matches.map(match => match.winners);
+            return this.matches.map(match => match.winners).flat();
         }
     }
 
@@ -188,11 +178,22 @@ class Step {
         return this.matches.every(match  => !!match.winners);
     }
 
-    Start() {
+    Start(teams) {
+        const log = `Start Step <${this.stepLabel}>`
+        console.groupCollapsed(log);
+        console.table(teams);
+
+        // TODO - Refacto initialization : without fake data
+        // this.teams = [];
+        teams.forEach(team => {
+            this.AddTeam(team);
+        });
+
         // TODO - Better than rebuild whole HTML;
         this.BuildHTML();
         this.started = true;
         this.container.classList.add("active");
+        console.groupEnd();
     }
 }
 
