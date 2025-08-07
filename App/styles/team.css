@@ -1,14 +1,14 @@
+:root {
+    --team-width: 300px;
+    --team-padding: 1rem;
+    --team-total-width: calc(var(--team-width) + 2 * var(--team-padding));
+}
+
 .step:not(.active) .team .name, .step:not(.active) .team .members > span {
     color: transparent;
 }
 
 .team {
-    display: flex;
-    align-items: center;
-}
-
-.team {
-    flex: 1 1 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,7 @@
     border-radius: 12px;
     padding: 1rem 1rem;
     box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
-    width: 300px;
+    width: var(--team-width);
     height: 110px;
 }
 
@@ -39,14 +39,6 @@
     color: azure;
 }
 
-.step:last-child .team .members {
-    display: block;
-}
-
-.step:last-child .team .members span {
-    display: block;
-}
-
 .team .stats {
     background: #1f1c2c;
     display: flex;
@@ -59,10 +51,6 @@
     font-weight: bold;
     color: #ffde7d;
     justify-content: center;
-}
-
-.step:last-child .team .stats {
-    display: none;
 }
 
 .team .stats input[type="text"] {
@@ -83,4 +71,21 @@
 .team .stats input[type="text"]:focus {
     background-color: #29253a;
     box-shadow: 0 0 0 2px #ffcbcb;
+}
+
+/** Winners **/
+.team:only-child {
+    height: auto;
+}
+
+.team:only-child .members {
+    display: block;
+}
+
+.team:only-child .members span {
+    display: block;
+}
+
+.team:only-child .stats {
+    display: none;
 }

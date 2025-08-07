@@ -1,0 +1,98 @@
+body {
+    height: fit-content;
+}
+
+#GlobalContainer {
+    text-align: center;
+}
+
+.important {
+    color: red;
+    font-family: 'Kaushan Script';
+    font-weight: bold;
+}
+
+h1 {
+    font-family: 'Herr Von Muellerhoff';
+    font-family: 'Abel';
+    font-family: 'Istok Web';
+    font-family: 'Roboto Condensed:700';
+    font-family: 'Holtwood One SC';
+    font-size: 1.5em;
+    background-color: black;
+    color: white;
+}
+
+.lower {
+  font-size: 10px;
+}
+
+h2 .sub {
+    display: block;
+    font-size: 16px;
+}
+
+
+.column {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 50%;
+    margin: 25px;
+    margin-top: 0;
+}
+
+.column:last-child {
+    margin-right: 0;
+}
+
+.rules .list .rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 70px;
+}
+
+.rules .list .rule:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.rules .list .rule:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.rules .list .rule .text {
+    width: fit-content;
+    font-family: 'Roboto Condensed';
+    font-size: 20px;
+}
+
+.rules .list .rule .important {
+    font-size: 25px;
+}
+
+.rules .list .rule img {
+    height: 120px;
+    border-radius: 25px;
+}
+
+.progress .steps {
+    display: flex;
+}
+
+.teams {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.teams .list {
+    display: flex;
+    flex-wrap: wrap;
+    --column-count: 4;
+    --col-gap: 5px;
+    gap: 20px var(--col-gap);
+    width: calc((var(--column-count) - 1) * var(--col-gap) + (var(--column-count) * var(--team-total-width)));
+}
+
+.team .stats {
+    display: none;
+}

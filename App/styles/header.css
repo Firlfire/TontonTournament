@@ -1,6 +1,7 @@
 body {
     margin: 0;
 }
+
 header {
     background-color: black;
 }
@@ -16,9 +17,9 @@ header {
     font-family: 'IMPACT';
     font-weight: normal;
     font-size: 2.5rem;
-    margin: 0 0 20px;
     text-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
+    margin: 0;
 }
 
 .hero p {
@@ -32,10 +33,11 @@ header {
 
 .header-wrap {
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 50px;
-    height: 350px;
-    padding: 3.5em 10px;
+    /* height: 350px; */
+    padding: 3em 10px;
 }
 
 .header p.intro {
@@ -44,4 +46,5 @@ header {
     letter-spacing: 1px;
     font-size: 6em;
     margin-bottom: -40px;
+    margin: 0;
 }
