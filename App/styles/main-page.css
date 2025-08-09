@@ -1,5 +1,6 @@
 body {
     height: fit-content;
+    background: none;
 }
 
 #GlobalContainer {
@@ -95,4 +96,11 @@ h2 .sub {
 
 .team .stats {
     display: none;
+}
+
+.list-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 25px;
 }

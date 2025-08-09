@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="./styles/team.css">
     <link rel="stylesheet" href="./styles/main-page.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
@@ -23,7 +24,17 @@
     <div id="GlobalContainer">
         <article id="container">
             <div class="column">
-                <section class="rules">
+                <section class="list-buttons">
+                    <button type="button" class="btn btn-outline-secondary btn-rules">REGLES</button>
+                    <button type="button" class="btn btn-outline-secondary btn-progress">DÉROULEMENT</button>
+                    <button type="button" class="btn btn-outline-secondary btn-teams">LES ÉQUIPES</button>
+                    <button type="button" class="btn btn-outline-secondary btn-rewards">RÉCOMPENSES</button>
+                    <button type="button" class="btn btn-outline-secondary btn-bracket">BRACKET</button>
+                </section>
+            </div>
+            
+            <div class="column">
+                <section id="rules" class="rules">
                     <h1>Regles</h1>
     
                     <div class="list">
@@ -49,10 +60,8 @@
                         </div>
                     </div>
                 </section>
-            </div>
-            
-            <div class="column">
-                <section class="progress">
+
+                <section id="progress" class="progress">
                     <h1>Déroulement</h1>
 
                     <div class="steps">
@@ -77,17 +86,17 @@
                     </div>
                 </section>
 
-                <section class="rewards">
+                <section id="rewards" class="rewards">
                     <h1>Récompenses</h1>
-                    <p class="text">Un skin par gagnat ! <span class="lower">1350 RP maximum</span></p>
-                    <p class="text">... Et des récompenses secretes !</p>
+                    <p class="text">Un skin par gagnant ! <span class="lower">1350 RP maximum</span></p>
+                    <p class="text">... Et des récompenses secrètes !</p>
                 </section>
             </div>
         </article>
 
         <article>
             
-            <section class="teams">
+            <section id="teams" class="teams">
                 <h1>Teams</h1>
                 <div class="list"></div>
             </section>

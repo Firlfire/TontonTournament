@@ -48,7 +48,7 @@ http://fr.123rf.com/ai-image-generator/
 # TODO
 ## index.html
 - Header au centre
-- Bouton vers main-page.html : style 'Match found' sur LoL
+- Bouton vers main-page.html : style 'Match found' sur LoL [x]
 ## main page
 - Header un peu moins haut
 - HTML :
