@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const container = document.querySelector("div#GlobalContainer #container");
+    const container = document.querySelector("div#global-container #container");
 
     const steps = [
         new FusionStep("Round 1"),
