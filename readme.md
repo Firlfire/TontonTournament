@@ -48,19 +48,20 @@ http://fr.123rf.com/ai-image-generator/
 # TODO - DEV
 ## index.html
 - [ ] Header au centre
-- [ ] Bouton vers main-page.html : style 'Match found' sur LoL [x]
+- [x] Bouton vers main-page.html : style 'Match found' sur LoL
 ## main page
 - [ ] Header un peu moins haut
 - HTML :
     - Bouton a gauche
-        - [ ] 1 par 'section' : affiche le contenu a droite
-        - [ ] 1 pour aller sur la page du Bracket
+        - [x] 1 par 'section' : affiche le contenu a droite
+        - [x] 1 pour aller sur la page du Bracket
     - Section a affichées
-        - [ ] Regles
-        - [ ] Déroulement
-        - [ ] Récompenses
-        - [ ] Teams (cf screen dans la conversation)
-- [ ] code bouton sur le côté (affichage de la bonne section)
+        - [x] Regles
+        - [x] Déroulement
+        - [x] Récompenses
+        - [x] Teams (cf screen dans la conversation)
+- [x] code bouton sur le côté (affichage de la bonne section)
+- [ ] Finir le style
 ## bracket
 - [ ] Afficher la step suivante a la fin de la step d'avant
 - [ ] Style specifique pour la team des Winners dans la bracket
