@@ -5,12 +5,12 @@ class Popup {
     }
 
     static GetContainer() {
-        const global-container = document.querySelector("body");
-        let popupContainer = global-container.querySelector("#popup-container");
+        const globalContainer = document.querySelector("body");
+        let popupContainer = globalContainer.querySelector("#popup-container");
         if (!popupContainer) {
             popupContainer = document.createElement("dialog");
             popupContainer.id = "popup-container";
-            global-container.appendChild(popupContainer);
+            globalContainer.appendChild(popupContainer);
         }
 
         popupContainer.innerHTML = "";
