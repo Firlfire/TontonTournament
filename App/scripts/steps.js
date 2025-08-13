@@ -51,16 +51,6 @@ class HtmlBuilder {
         return HtmlBuilder.match.cloneNode(true);
     }
 
-    static GetFusionWrapper() {
-        if (!HtmlBuilder.fusion)
-        {
-            HtmlBuilder.fusion = document.createElement("div");
-            HtmlBuilder.fusion.className = "fusion-wrapper";
-        }
-
-        return HtmlBuilder.fusion.cloneNode(true);
-    }
-
     static GetTeam() {
         if (!HtmlBuilder.team)
         {
@@ -139,7 +129,7 @@ class Step {
         const label = html.querySelector(".label");
         label.innerText = match.title;
 
-        html.querySelector(".participants").append(...match.teams.map(team => this.BuildParticipantHTML(team)));
+        html.querySelector(".participants").append(...match.teams.map(team => this.BuildTeamHTML(team)));
         
         html.addEventListener(events.Score, () => {
             const winners = this.GetMatchWinners(match);
@@ -155,10 +145,6 @@ class Step {
         });
         
         return html;
-    }
-
-    BuildParticipantHTML(team) {
-        return this.BuildTeamHTML(team);
     }
 
     BuildTeamHTML(teamData) {
@@ -285,11 +271,12 @@ class FusionStep extends Step {
     }
 
     //#region abstract members
-    BuildParticipantHTML(participants) {
-        const html = HtmlBuilder.GetFusionWrapper();
+    BuildTeamHTML(team) {
+        const html = document.createElement("div")
+        html.className = "fusion-wrapper";
 
-        for (const team of participants) {
-            const teamHtml = this.BuildTeamHTML(team);
+        for (const duo of team) {
+            const teamHtml = super.BuildTeamHTML(duo);
             html.appendChild(teamHtml);
         }
 
@@ -332,16 +319,4 @@ class FusionStep extends Step {
         });
     }
     //#endregion overriden members
-
-    BuildFusionHTML(teams) {
-        const template = document.querySelector("#fusion-template").content.cloneNode(true);
-        const html = template.querySelector(".fusion-wrapper");
-
-        for (const team of teams) {
-            const teamHtml = this.BuildTeamHTML(team);
-            html.appendChild(teamHtml);
-        }
-
-        return html;
-    }
 }
