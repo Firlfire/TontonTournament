@@ -45,33 +45,33 @@ Bonus :
 http://fr.123rf.com/ai-image-generator/
     Timer de 20 minutes dans un style qui mélange fun, jeu vidéo et bagarre
 
-# TODO
+# TODO - DEV
 ## index.html
-- Header au centre
-- Bouton vers main-page.html : style 'Match found' sur LoL [x]
+- [ ] Header au centre
+- [ ] Bouton vers main-page.html : style 'Match found' sur LoL [x]
 ## main page
-- Header un peu moins haut
+- [ ] Header un peu moins haut
 - HTML :
     - Bouton a gauche
-        - 1 par 'section' : affiche le contenu a droite
-        - 1 pour aller sur la page du Bracket
+        - [ ] 1 par 'section' : affiche le contenu a droite
+        - [ ] 1 pour aller sur la page du Bracket
     - Section a affichées
-        - Regles
-        - Déroulement
-        - Récompenses
-        - Teams (cf screen dans la conversation)
-- code bouton sur le côté (affichage de la bonne section)
+        - [ ] Regles
+        - [ ] Déroulement
+        - [ ] Récompenses
+        - [ ] Teams (cf screen dans la conversation)
+- [ ] code bouton sur le côté (affichage de la bonne section)
 ## bracket
-- Afficher la step suivante a la fin de la step d'avant
-- Style specifique pour la team des Winners dans la bracket
-- Couleur traits bracet dorée (couleur a revoir au dernier point avant le tournoi)
-- Sauvegarder/Get data depuis le localStorage (supporter le F5)
+- [ ] Afficher la step suivante a la fin de la step d'avant
+- [ ] Style specifique pour la team des Winners dans la bracket
+- [ ] Couleur traits bracet dorée (couleur a revoir au dernier point avant le tournoi)
+- [ ] Sauvegarder/Get data depuis le localStorage (supporter le F5)
 ## Global
-- Merger index.html et main-page.html (et bracket.html ?)
-- index.html doit avoir un 'big' header
-- Faire démarrer l'image de fond sous le headeur
+- [ ] Merger index.html et main-page.html (et bracket.html ?)
+- [ ] index.html doit avoir un 'big' header
+- [ ] Faire démarrer l'image de fond sous le headeur
 
-# TODO
-- Réfléchir aux différents texte a afficher
-- Filer l'image du papyrus
-- Images de skin en .png ou .svg
+# TODO - Gesionnaire tournois
+- [ ] Réfléchir aux différents texte a afficher
+- [x] Filer l'image du papyrus
+- [ ] Images de skin en .png ou .svg
