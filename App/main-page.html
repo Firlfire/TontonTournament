@@ -25,87 +25,105 @@
     <iframe name="headerFrame" id="headerFrame" src="fragments/header.html" frameborder="0" cellspacing="0"></iframe>
 
     <div id="global-container">
+        <nav class="list-buttons">
+            <button type="button" class="btn btn-outline-secondary btn-rules">REGLES</button>
+            <button type="button" class="btn btn-outline-secondary btn-progress">DÉROULEMENT</button>
+            <button type="button" class="btn btn-outline-secondary btn-rewards">RÉCOMPENSES</button>
+            <button type="button" class="btn btn-outline-secondary btn-teams">LES ÉQUIPES</button>
+            <button type="button" class="btn btn-outline-secondary btn-bracket">BRACKET</button>
+        </nav>
+        
         <article id="container">
-            <div class="column">
-                <section class="list-buttons">
-                    <button type="button" class="btn btn-outline-secondary btn-rules">REGLES</button>
-                    <button type="button" class="btn btn-outline-secondary btn-progress">DÉROULEMENT</button>
-                    <button type="button" class="btn btn-outline-secondary btn-teams">LES ÉQUIPES</button>
-                    <button type="button" class="btn btn-outline-secondary btn-rewards">RÉCOMPENSES</button>
-                    <button type="button" class="btn btn-outline-secondary btn-bracket">BRACKET</button>
-                </section>
-            </div>
+            <section id="rules" class="rules">
+                <!-- <h1>Regles</h1> -->
 
-            <div class="column">
-                <section id="rules" class="rules">
-                    <h1>Regles</h1>
-
-                    <div class="list">
-                        <div class="rule">
-                            <p class="text"><span class="important">Map ARAM</span></p>
-                            <img src="./assets/aram-bagarre.png" alt="LA BASTON" />
-                        </div>
-                        <div class="rule">
-                            <p class="text">Objectifs.. <span class="important">CARNAGE TOTAL</span></p>
-                            <img src="./assets/babouche.png" alt="CARNAGE BTW" /> <!-- compteur de kills -->
-                        </div>
-                        <div class="rule">
-                            <p class="text">Durée <span class="important">20 minutes max</span></p>
-                            <img src="./assets/chrono.png" alt="Affiche_du_KS" />
-                        </div>
-                        <div class="rule">
-                            <p class="text">Match en <span class="important">duo</span></p>
-                            <img src="./assets/duo.png" alt="Affiche_du_KS" />
-                        </div>
-                        <div class="rule">
-                            <p class="text">Un duo ne peut pick un champion <span class="important">qu'une seule
-                                    fois</span></p>
-                            <img src="./assets/duo.png" alt="Affiche_du_KS" />
-                        </div>
+                <div class="list">
+                    <div class="rule">
+                        <p class="text"><span class="important">Map ARAM</span></p>
+                        <img src="./assets/aram-bagarre.png" alt="LA BASTON" />
                     </div>
-                </section>
-
-                <section id="progress" class="progress">
-                    <h1>Déroulement</h1>
-
-                    <div class="steps">
-                        <div class="step">
-                            <h2>Première phase <span class="sub">2 + 2 = 4vs4</span><span class="sub">Mes ennemis sont
-                                    mes amis</span></h2>
-                            <p>Association aléatoire de deux duo</p>
-                            <p>Seul tuer comptent <span class="important">#kill</span></p>
-                            <p class="goal">Les deux duos avec le plus de <strike>points</strike> kills sont qualifiés
-                            </p>
-                        </div>
-                        <div class="step">
-                            <h2>Deuxième phase <span class="sub">mes amis sont <span class="lower">peut-etre</span> mes
-                                    ennemis...</span></h2>
-                            <p>Co-équipier ou pas, les deux duos de chaque match précédent s'affrontent</p>
-                            <p>classe de champion aléatoire <span class="important">#random</span></p>
-                            <p class="goal">Les deux duos avec le plus de <strike>points</strike> kills sont qualifiés
-                            </p>
-                        </div>
-                        <div class="step">
-                            <h2>La final ! <span class="sub">Que dire de plus ?</span></h2>
-                            <p>Affrontement entre les deux équipes qualifiées</p>
-                            <p><span class="important">contrainte de pick :</span> class de champion aléatoire</p>
-                            <p class="goal">Un seul <span class="important">objectif</span> : <span class="important">LE
-                                    NEXUS !</span></p>
-                        </div>
+                    <div class="rule">
+                        <p class="text">Objectifs.. <span class="important">CARNAGE TOTAL</span></p>
+                        <img src="./assets/babouche.png" alt="CARNAGE BTW" /> <!-- compteur de kills -->
                     </div>
-                </section>
+                    <div class="rule">
+                        <p class="text">Durée <span class="important">20 minutes max</span></p>
+                        <img src="./assets/chrono.png" alt="Affiche_du_KS" />
+                    </div>
+                    <div class="rule">
+                        <p class="text">Match en <span class="important">duo</span></p>
+                        <img src="./assets/duo.png" alt="Affiche_du_KS" />
+                    </div>
+                    <div class="rule">
+                        <p class="text">Un duo ne peut pick un champion <span class="important">qu'une seule
+                                fois</span></p>
+                        <img src="./assets/duo.png" alt="Affiche_du_KS" />
+                    </div>
+                </div>
+            </section>
 
-                <section id="rewards" class="rewards">
-                    <h1>Récompenses</h1>
-                    <p class="text">Un skin par gagnant ! <span class="lower">1350 RP maximum</span></p>
-                    <p class="text">... Et des récompenses secrètes !</p>
-                </section>
-            </div>
-        </article>
+            <section id="steps" class="steps">
+                <!-- <h1>Déroulement</h1> -->
 
-        <article>
+                <div class="list">
+                    <div class="step">
+                        <div class="header">
+                            <h2>Première phase</h2>
+                            <h6>2 + 2 = 4vs4</h6>
+                            <h6>Mes ennemis sont mes amis</h6>
+                        </div>
+                        <p>Association aléatoire de deux duo</p>
+                        <p>Seul tuer comptent <span class="important">#kill</span></p>
+                        <p class="goal">Les deux duos avec le plus de <strike>points</strike> kills sont qualifiés
+                        </p>
+                        <!-- <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Première phase</h5>
+                                <h6>2 + 2 = 4vs4</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Mes ennemis sont mes amis</h6>
+                                <p class="card-text">Association aléatoire de deux duo</p>
+                                <p class="card-text">Seul tuer comptent <span class="important">#kill</span></p>
+                                <p class="card-text">Les deux duos avec le plus de <strike>points</strike> kills sont qualifiés
+                                </p>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <div class="step">
+                        <div class="header">
+                            <h2>Deuxième phase</h2>
+                            <h6>Mes amis sont <span class="lower">peut-etre</span> mes ennemis...</span></h6>
+                        </div>
+
+                        <p>Co-équipier ou pas, les deux duos de chaque match précédent s'affrontent</p>
+                        <p>classe de champion aléatoire <span class="important">#random</span></p>
+                        <p class="goal">Les deux duos avec le plus de <strike>points</strike> kills sont qualifiés
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <div class="header">
+                            <h2>La final !</h2>
+                            <h6>Que dire de plus ?</h6>
+                        </div>
+
+                        <p>Affrontement entre les deux équipes qualifiées</p>
+                        <p><span class="important">contrainte de pick :</span> class de champion aléatoire</p>
+                        <p class="goal">Un seul <span class="important">objectif</span> : <span class="important">LE
+                                NEXUS !</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="rewards" class="rewards">
+                <!-- <h1>Récompenses</h1> -->
+
+                <p class="text">Un skin par gagnant ! <span class="lower">1350 RP maximum</span></p>
+                <p class="text">... Et des récompenses secrètes !</p>
+            </section>
+
             <section id="teams" class="teams">
-                <h1>Teams</h1>
+                <!-- <h1>Teams</h1> -->
                 <div class="list"></div>
             </section>
         </article>

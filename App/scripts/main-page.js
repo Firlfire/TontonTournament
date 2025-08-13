@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btnProgress.addEventListener("click", (event) => {
         hideAllSections();
-        const progress = document.querySelector("section#progress");
+        const progress = document.querySelector("section#steps");
         displayCurrentSection(progress);
     })
 
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function hideAllSections() {
     const sectionRules = document.querySelector("#rules");
-    const sectionProgress = document.querySelector("#progress");
+    const sectionProgress = document.querySelector("#steps");
     const sectionTeams = document.querySelector("#teams");
     const sectionRewards = document.querySelector("#rewards");
 

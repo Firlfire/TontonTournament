@@ -4,6 +4,8 @@ body {
 }
 
 #global-container {
+    --nav-menu-width: 250px;
+
     text-align: center;
 }
 
@@ -13,7 +15,23 @@ body {
     font-weight: bold;
 }
 
-h1 {
+/* h1 {
+    font-family: 'Herr Von Muellerhoff';
+    font-family: 'Abel';
+    font-family: 'Istok Web';
+    font-family: 'Roboto Condensed:700';
+    font-family: 'Holtwood One SC';
+    font-size: 1.5em;
+    background-color: black;
+    color: white;
+} */
+
+.lower {
+  font-size: 0.6em;
+}
+
+.header h2 {
+    margin: 0px;
     font-family: 'Herr Von Muellerhoff';
     font-family: 'Abel';
     font-family: 'Istok Web';
@@ -24,17 +42,48 @@ h1 {
     color: white;
 }
 
-.lower {
-  font-size: 10px;
-}
-
-h2 .sub {
+.header h6 {
     display: block;
-    font-size: 16px;
+    font-size: 1em;
 }
 
+.header h6:not(:last-child) {
+    margin: unset;
+}
 
-.column {
+nav {
+    width: var(--nav-menu-width);
+    position: fixed;
+    padding: 20px;
+}
+
+#container {
+    --content-margin: calc(100% - 10px);
+
+    display: inline-block;
+    padding: 20px 0px;
+    margin-left: var(--nav-menu-width);
+    width: calc(100% - var(--nav-menu-width));
+    
+    background: url("../assets/papyrus.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Manually add in DOM for live demo */
+#container.h {
+    background: url(../assets/papyrus-horizontal.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+#container section {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+/* .column {
     display: inline-block;
     vertical-align: top;
     max-width: 50%;
@@ -44,7 +93,7 @@ h2 .sub {
 
 .column:last-child {
     margin-right: 0;
-}
+} */
 
 .rules .list .rule {
     display: flex;
@@ -64,11 +113,11 @@ h2 .sub {
 .rules .list .rule .text {
     width: fit-content;
     font-family: 'Roboto Condensed';
-    font-size: 20px;
+    font-size: 1.2em;
 }
 
 .rules .list .rule .important {
-    font-size: 25px;
+    font-size: 1.3em;
 }
 
 .rules .list .rule img {
@@ -76,22 +125,27 @@ h2 .sub {
     border-radius: 25px;
 }
 
-.progress .steps {
+.steps .list {
     display: flex;
+    flex-direction: column;
+    row-gap: 50px;
 }
 
-.teams {
-    width: fit-content;
-    margin: 0 auto;
+.steps .list p {
+    margin: 0px;
 }
 
 .teams .list {
-    display: flex;
-    flex-wrap: wrap;
     --column-count: 4;
-    --col-gap: 5px;
-    gap: 20px var(--col-gap);
-    width: calc((var(--column-count) - 1) * var(--col-gap) + (var(--column-count) * var(--team-total-width)));
+    display: flex;
+    justify-content: space-between;
+    row-gap: 80px;
+    flex-wrap: wrap;
+    width: calc(var(--column-count) * var(--team-total-width));
+}
+
+.teams .list .team {
+    flex-shrink: 0;
 }
 
 .team .stats {
