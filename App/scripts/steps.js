@@ -18,15 +18,14 @@ const StepDatas = {
 }
 
 class HtmlBuilder {
-    static GetStep(labelText) {
+    static GetStep() {
         if (!HtmlBuilder.step)
         {
             HtmlBuilder.step = document.createElement("section");
             HtmlBuilder.step.className = "step";
          
             const label = document.createElement("div");
-            label.className = "label";
-            label.innerText = labelText;
+            label.className = "label title";
             HtmlBuilder.step.appendChild(label);
         }
 
@@ -40,7 +39,7 @@ class HtmlBuilder {
             HtmlBuilder.match.className = "match";
          
             const label = document.createElement("div");
-            label.className = "label";
+            label.className = "label title";
             HtmlBuilder.match.appendChild(label);
          
             const participants = document.createElement("div");
@@ -90,7 +89,7 @@ class Step {
         this.matchWinnerCount = winnerCount ?? 1;
         this.straightConnector = straightConnector ?? false;
         this.stepLabel = stepLabel;
-        this.matchLabel = "Demi-Final"; // ou final pour la final
+        this.matchLabel = "Match"; // ou Demi-Final ou Final ?
         // TODO - Refacto intialization : without fake data - no need if step display one after one
         this.teams = new Array(teamsCount).fill({ name: null, members: ["", ""]});
     }
@@ -109,7 +108,9 @@ class Step {
     BuildContainer() {
         if (!this.container)
         {
-            this.container = HtmlBuilder.GetStep(this.stepLabel);
+            this.container = HtmlBuilder.GetStep();
+            const label = this.container.querySelector(".label");
+            label.innerText = this.stepLabel;
         }
         else
         {
