@@ -30,18 +30,6 @@ body {
   font-size: 0.6em;
 }
 
-.header h2 {
-    margin: 0px;
-    font-family: 'Herr Von Muellerhoff';
-    font-family: 'Abel';
-    font-family: 'Istok Web';
-    font-family: 'Roboto Condensed:700';
-    font-family: 'Holtwood One SC';
-    font-size: 1.5em;
-    background-color: black;
-    color: white;
-}
-
 .header h6 {
     display: block;
     font-size: 1em;

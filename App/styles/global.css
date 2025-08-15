@@ -20,6 +20,18 @@ body {
     text-align: center;
 }
 
+.title {
+    margin: 0px;
+    font-family: 'Herr Von Muellerhoff';
+    font-family: 'Abel';
+    font-family: 'Istok Web';
+    font-family: 'Roboto Condensed:700';
+    font-family: 'Holtwood One SC';
+    font-size: 1.5em;
+    background-color: var(--title-bg-color, #000000);
+    color: var(--title-text-color, white);
+}
+
 /* HEADER */
 #headerFrame {
     width: 100%;

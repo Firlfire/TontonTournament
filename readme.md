@@ -63,14 +63,16 @@ http://fr.123rf.com/ai-image-generator/
 - [x] code bouton sur le côté (affichage de la bonne section)
 - [ ] Finir le style
 ## bracket
-- [ ] Afficher la step suivante a la fin de la step d'avant
-- [ ] Style specifique pour la team des Winners dans la bracket
-- [ ] Couleur traits bracet dorée (couleur a revoir au dernier point avant le tournoi)
+- [x] Afficher la step suivante a la fin de la step d'avant
+- [ ] (commencé) Style specifique pour la team des Winners dans la bracket
+- [x] Couleur traits bracet dorée (couleur a revoir au dernier point avant le tournoi)
 - [ ] Sauvegarder/Get data depuis le localStorage (supporter le F5)
 ## Global
-- [ ] Merger index.html et main-page.html (et bracket.html ?)
 - [ ] index.html doit avoir un 'big' header
-- [ ] Faire démarrer l'image de fond sous le headeur
+- [ ] Faire démarrer l'image de fond sous le headeur ?
+
+## BONUS
+- [ ] Merger index.html et main-page.html (et bracket.html ?)
 
 # TODO - Gesionnaire tournois
 - [ ] Réfléchir aux différents texte a afficher
