@@ -1,3 +1,16 @@
+:root {
+    --main-color-cyan: hsl(184, 100%, 42%);
+    --main-color-yellow: hsl(40, 61%, 57%);
+
+    --main-color-blue-h: 204;
+    --main-color-blue-s: 29%;
+    --main-color-blue-l: 30%;
+    
+    --main-color-blue: hsl(var(--main-color-blue-h), var(--main-color-blue-s), var(--main-color-blue-l));
+    --main-color-blue-dark: hsl(var(--main-color-blue-h), 50%, 15%);
+    --main-color-blue-text: hsl(var(--main-color-blue-h), var(--main-color-blue-s), calc(var(--main-color-blue-l) * 1.2));
+}
+
 /* peut être modif ça, je sais pas, j'ai fait vite */
 html, body {
     min-height: 100vh;
@@ -24,7 +37,9 @@ body {
     font-family: 'Roboto Condensed:700';
     font-family: 'Holtwood One SC';
     font-size: 1.5em;
-    background-color: var(--title-bg-color, #000000);
+    padding-top: 7px;
+    background-color: var(--title-bg-color, var(--main-color-blue-dark));
+    border: 2px solid var(--title-border-color, var(--main-color-cyan));
     color: var(--title-text-color, white);
 }
 

@@ -9,11 +9,12 @@
     --step-golden-color-dark: hsl(45, 74%, calc(44% * 0.8));
     --step-golden-color-light: hsl(45, 100%, 75%);
     
-    --step-title-h: 201;
     --step-title-s: 55%;
     --step-title-l: 39%;
-    --title-bg-color: hsl(var(--step-title-h), var(--step-title-s), 15%);
-    --title-text-color: hsl(var(--step-title-h), var(--step-title-s), calc(var(--step-title-l) * 1.2));
+    --title-bg-color: hsl(var(--main-color-blue-h), var(--step-title-s), 15%);
+    /* Live Demo */
+    /* --title-text-color: hsl(var(--main-color-blue-h), var(--step-title-s), calc(var(--step-title-l) * 1.2)); */
+    --title-text-color: hsl(var(--main-color-blue-h), var(--main-color-blue-s), calc(var(--step-title-l) * 1.5));
 
     display: flex;
     flex-direction: column;
@@ -34,7 +35,7 @@
     font-size: 1em;
     text-transform: uppercase;
     text-align: center;
-    border: 2px solid hsl(var(--step-title-h), var(--step-title-s), var(--step-title-l));
+    border: 2px solid hsl(var(--main-color-blue-h), var(--step-title-s), var(--step-title-l));
     background-color: var(--title-bg-color, #000000);
     color: var(--title-text-color, white);
 }
@@ -88,7 +89,8 @@
     text-align: center;
     margin-bottom: 5px;
     font-size: 1em;
-    border-bottom: black solid 2px;
+    border: unset;
+    padding: unset;
 }
 
 .step:last-child .match .label {
@@ -99,6 +101,11 @@
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+}
+
+.step:not(:last-child) .match .participants {
+    border-top: 2px solid var(--step-golden-color);
+    padding-top: 5px;
 }
 
 .step:not(:last-child) .match .participants:not(:has(.fusion-wrapper)) {

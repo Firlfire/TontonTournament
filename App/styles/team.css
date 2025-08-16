@@ -13,18 +13,17 @@
     column-gap: 10px;
     padding: 10px;
     border-radius: 20px;
-    background-color: hsla(232, 19%, 54%, 1);
+    background-color: var(--main-color-blue);
 }
 
 .team {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--team-bg-color, hsla(245, 9%, 27%, 1));
+    background-color: var(--team-bg-color, var(--main-color-blue-dark));
     border-radius: 12px;
     padding: var(--team-padding);
-    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 0 8px var(--team-shadow-color, rgba(255, 255, 255, 0.1));
+    box-shadow: inset 0 0 8px var(--team-shadow-color, hsla(0, 0%, 100%, 0.5));
     width: var(--team-width);
     height: 110px;
 }
@@ -49,7 +48,7 @@
 }
 
 .team .stats {
-    background: #1f1c2c;
+    background-color: var(--main-color-blue);
     display: flex;
     flex-direction: row;
     padding: 10px;
@@ -66,7 +65,7 @@
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 8px;
-    background-color: #1f1c2c;
+    background-color: var(--main-color-blue);
     color: var(--step-golden-color-light);
     font-weight: bold;
     font-size: 1rem;
@@ -78,7 +77,7 @@
 
 /* Effet focus */
 .team .stats input[type="text"]:focus {
-    background-color: #29253a;
+    background-color: hsl(var(--main-color-blue-h), var(--main-color-blue-s), calc(var(--main-color-blue-l) + 5%));
     box-shadow: 0 0 0 2px #ffcbcb;
 }
 
