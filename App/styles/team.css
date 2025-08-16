@@ -8,18 +8,23 @@
     color: transparent;
 }
 
+.fusion-wrapper {
+    display: flex;
+    column-gap: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: hsla(232, 19%, 54%, 1);
+}
+
 .team {
-    --main-color-h: 245;  /* Hue        */
-    --main-color-s: 9%;   /* Saturation */
-    --main-color-l: 27%;  /* Lightness  */
-    --main-color-t: 1;    /* Transparency  */
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: hsla(var(--main-color-h), var(--main-color-s), var(--main-color-l), var(--main-color-t));
+    background-color: var(--team-bg-color, hsla(245, 9%, 27%, 1));
     border-radius: 12px;
-    padding: 1rem 1rem;
+    padding: var(--team-padding);
     box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 8px var(--team-shadow-color, rgba(255, 255, 255, 0.1));
     width: var(--team-width);
     height: 110px;
 }
@@ -30,7 +35,7 @@
     font-size: 1.2rem;
     border-bottom: 1px solid #888;
     padding-bottom: 0.4rem;
-    color: #ffc6ff;
+    color: var(--team-name-color, #ffc6ff);
 }
 
 .team .members {
@@ -80,6 +85,8 @@
 /** Winners **/
 .team:only-child {
     --team-members-color: var(--step-golden-color-dark);
+    --team-bg-color: var(--step-golden-color-light);
+    --team-name-color: var(--team-members-color);
 
     height: auto;
     border: 5px solid var(--step-golden-color);

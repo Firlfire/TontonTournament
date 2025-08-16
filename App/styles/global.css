@@ -1,7 +1,3 @@
-:root {
-    --team-bg-color: hsl(232, 19%, 54%, var(--team-bg-color-opacity, 1));
-}
-
 /* peut être modif ça, je sais pas, j'ai fait vite */
 html, body {
     min-height: 100vh;

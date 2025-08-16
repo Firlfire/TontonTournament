@@ -39,6 +39,11 @@
     color: var(--title-text-color, white);
 }
 
+.step .match {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
 .step:not(:last-child) .match {
     padding: 5px;
     border: var(--step-golden-color) solid 3px;
@@ -99,14 +104,4 @@
 .step:not(:last-child) .match .participants:not(:has(.fusion-wrapper)) {
     padding: 10px;
     row-gap: 30px;
-}
-
-.fusion-wrapper {
-    display: flex;
-    column-gap: 10px;
-    padding: 10px;
-
-    border-radius: 20px;
-    --team-bg-color-opacity: 0.5;
-    background-color: var(--team-bg-color);
 }
