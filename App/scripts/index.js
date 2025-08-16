@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Tournament start
      */
-    steps[0].Start(StepDatas.teams);
+    steps[0].Start(StepData.teams);
 
     // const popup = new PrankPopup("TA MERE", "POUR NAOY");
     // popup.Open();
