@@ -1,6 +1,7 @@
 :root {
     --team-width: 300px;
     --team-padding: 1rem;
+    --fusion-wrapper-padding: 10px;
     --team-total-width: calc(var(--team-width) + 2 * var(--team-padding));
 }
 
@@ -11,7 +12,7 @@
 .fusion-wrapper {
     display: flex;
     column-gap: 10px;
-    padding: 10px;
+    padding: var(--fusion-wrapper-padding);
     border-radius: 20px;
     background-color: var(--main-color-blue);
 }

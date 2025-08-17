@@ -105,10 +105,10 @@
 
 .step:not(:last-child) .match .participants {
     border-top: 2px solid var(--step-golden-color);
-    padding-top: 5px;
+    padding: 5px 0px;
 }
 
 .step:not(:last-child) .match .participants:not(:has(.fusion-wrapper)) {
-    padding: 10px;
+    padding: calc(5px + var(--fusion-wrapper-padding)) 0px;
     row-gap: 30px;
 }
