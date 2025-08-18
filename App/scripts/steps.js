@@ -4,17 +4,36 @@ const events = {
     StepEnd: "step-end"
 }
 
-const StepData = {
-    teams: [
-        { id: 1, name: "Les pires...", members: ["Tonton NaoyTV", "Tonton W31lon"] },
-        { id: 2, name: "Les devs", members: ["Tonton Dodger", "Tonton SeinQ"] },
-        { id: 3, name: "Les joueurs de Valoran", members: ["Tonton Thirty", "Tonton Wick"] },
-        { id: 4, name: "Les Random", members: ["CHOKO LA RANDOM", "UN AUTRE RANDOM"] },
-        { id: 5, name: "D'autre randoms", members: ["Random 1", "Random 2"] },
-        { id: 6, name: "D'autre randoms", members: ["Random 1", "Random 2"] },
-        { id: 7, name: "D'autre randoms", members: ["Random 1", "Random 2"] },
-        { id: 8, name: "D'autre randoms", members: ["Random 1", "Random 2"] },
-    ]
+class DataManager {
+    static #keyPrefix = "KillSecureCompetition";
+
+    #storageKey = "KillSecureCompetition";
+
+    constructor(key) {
+        this.#storageKey = `${DataManager.#keyPrefix}-${key}`;
+        this.#LoadData();
+    }
+
+    #LoadData() {
+        const dataStr = localStorage.getItem(this.#storageKey);
+        this.data = dataStr ? JSON.parse(dataStr) : {};
+    }
+
+    CleanData() {
+        localStorage.removeItem(this.#storageKey);
+    }
+    
+    GetData() {
+        if (!this.data) {
+            this.data = this.#LoadData();
+        }
+    }
+
+    SaveData(newData) {
+        console.log(`Update LocalStorage ${this.key} data => ${JSON.stringify(newData)}`);
+        localStorage.setItem(this.#storageKey, JSON.stringify(newData));
+        this.#LoadData();
+    }
 }
 
 class HtmlBuilder {
@@ -85,12 +104,16 @@ class HtmlBuilder {
 
 // TODO - Register/Load tournament data in LocalStorage
 class Step {
+    static #totalCount = 0;
+
     constructor(winnerCount, straightConnector, stepLabel, teamsCount) {
         this.matchWinnerCount = winnerCount ?? 1;
         this.straightConnector = straightConnector ?? false;
         this.stepLabel = stepLabel;
         this.matchLabel = "Match"; // ou Demi-Final ou Final ?
         this.teamSize = teamsCount;
+        this.id = Step.#totalCount++;
+        this.localStorage = new DataManager(`step-${this.id}`);
     }
 
     // AddTeam(team) {
@@ -107,7 +130,7 @@ class Step {
     BuildContainer() {
         if (!this.container)
         {
-            this.container = HtmlBuilder.GetStep();
+            this.container = HtmlBuilder.GetStep(this.id);
             const label = this.container.querySelector(".label");
             label.innerText = this.stepLabel;
         }
@@ -188,15 +211,7 @@ class Step {
         
         if (!this.initialized)
         {
-            this.container.addEventListener(events.MatchEnd, teamData => {
-                console.log(`Catch Event <${events.MatchEnd}>, isStepEnded = ${this.IsStepEnded()}`);
-                console.log(`TeamData: ${JSON.stringify(teamData)}`);
-                if (this.IsStepEnded()) {
-                    const winners = this.GetWinners();
-                    const event = this.BuildEvent(events.StepEnd, {winners})
-                    this.container.dispatchEvent(event);
-                }
-            });
+            this.container.addEventListener(events.MatchEnd, this.OnMatchEnd.bind(this));
         }
 
         this.initialized = true;
@@ -251,6 +266,24 @@ class Step {
 
     IsStepEnded() {
         return this.matches.every(match  => !!match.winners);
+    }
+
+    OnMatchEnd() {
+        const isStepEnded = this.IsStepEnded();
+        console.log(`Catch Event <${events.MatchEnd}>, isStepEnded = ${isStepEnded}`);
+        
+        if (this.IsStepEnded()) {
+            const winners = this.GetWinners();
+            this.localStorage.SaveData({
+                matches: this.matches
+            });
+            
+            const event = this.BuildEvent(events.StepEnd, {winners});
+            this.container.dispatchEvent(event);
+        }
+        else {
+            console.log("Step is not ended !");
+        }
     }
 
     Start(teams) {
