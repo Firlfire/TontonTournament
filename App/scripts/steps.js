@@ -90,20 +90,19 @@ class Step {
         this.straightConnector = straightConnector ?? false;
         this.stepLabel = stepLabel;
         this.matchLabel = "Match"; // ou Demi-Final ou Final ?
-        // TODO - Refacto intialization : without fake data - no need if step display one after one
-        this.teams = new Array(teamsCount).fill({ name: null, members: ["", ""]});
+        this.teamSize = teamsCount;
     }
 
-    AddTeam(team) {
-        // TODO - Refacto intialization : without fake data
-        const firstEmptySlotIndex = this.teams.findIndex(team => !team.name);
-        if (Number.isInteger(firstEmptySlotIndex) && firstEmptySlotIndex > -1) {
-            this.teams[firstEmptySlotIndex] = team;
-        }
-        else {
-            throw new Error("All team slot are already occupied");
-        }
-    }
+    // AddTeam(team) {
+    //     // TODO - Refacto intialization : without fake data
+    //     const firstEmptySlotIndex = this.teams.findIndex(team => !team.name);
+    //     if (Number.isInteger(firstEmptySlotIndex) && firstEmptySlotIndex > -1) {
+    //         this.teams[firstEmptySlotIndex] = team;
+    //     }
+    //     else {
+    //         throw new Error("All team slot are already occupied");
+    //     }
+    // }
 
     BuildContainer() {
         if (!this.container)
@@ -223,7 +222,15 @@ class Step {
         return matches;
     }
 
+    //!!\\ Refacto en cours !
     GetTeams() {
+
+        if (!this.teams)
+        {
+            // TODO - Refacto intialization : without fake data - no need if step display one after one
+            return new Array(this.teamSize).fill({ name: null, members: ["", ""]});
+        }
+
         return Array.from(this.teams);
     }
 
@@ -251,11 +258,15 @@ class Step {
         console.groupCollapsed(log);
         console.table(teams);
 
+        if (!teams || teams.length !== this.teamSize) {
+            throw new Error("The provided team list must match the team count required for this step");
+        }
+
         // TODO - Refacto initialization : without fake data
-        // this.teams = [];
-        teams.forEach(team => {
-            this.AddTeam(team);
-        });
+        this.teams = teams;
+        // teams.forEach(team => {
+        //     this.AddTeam(team);
+        // });
 
         // TODO - Better than rebuild whole HTML;
         this.BuildHTML();
@@ -289,7 +300,7 @@ class FusionStep extends Step {
     // Replaced by 'GetMatches'
     GetTeams() {
         if (!this.started || (!this.fusionnedTeams && this.teams)) {
-            const fusionCount = this.teams.length / 2;
+            const fusionCount = this.teamSize / 2;
             this.fusionnedTeams = [];
 
             const duplicateTeams = super.GetTeams();
