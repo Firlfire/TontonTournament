@@ -64,9 +64,9 @@ http://fr.123rf.com/ai-image-generator/
 - [ ] Finir le style
 ## bracket
 - [x] Afficher la step suivante a la fin de la step d'avant
-- [ ] (commencé) Style specifique pour la team des Winners dans la bracket
+- [x] Style specifique pour la team des Winners dans la bracket
 - [x] Couleur traits bracet dorée (couleur a revoir au dernier point avant le tournoi)
-- [ ] Sauvegarder/Get data depuis le localStorage (supporter le F5)
+- [IN PROGRESS] LocalStorage : Save/Get data (supporter le F5)
 ## Global
 - [ ] index.html doit avoir un 'big' header
 - [ ] Faire démarrer l'image de fond sous le headeur ?
