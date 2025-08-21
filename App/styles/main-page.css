@@ -4,6 +4,7 @@ body {
 }
 
 #global-container {
+    display: flex;
     --nav-menu-width: 250px;
     flex: 1;
     text-align: center;
@@ -67,18 +68,6 @@ nav {
     margin: 0 auto;
 }
 
-/* .column {
-    display: inline-block;
-    vertical-align: top;
-    max-width: 50%;
-    margin: 25px;
-    margin-top: 0;
-}
-
-.column:last-child {
-    margin-right: 0;
-} */
-
 .rules .list .rule {
     display: flex;
     align-items: center;
@@ -109,6 +98,11 @@ nav {
     border-radius: 25px;
 }
 
+.steps {
+    margin-left: 20em;
+    margin-right: 20em;
+}
+
 .steps .list {
     display: flex;
     flex-direction: column;
@@ -116,7 +110,7 @@ nav {
 }
 
 .steps .list p {
-    margin: 0px;
+    margin: 0;
 }
 
 .teams .list {
@@ -126,6 +120,8 @@ nav {
     row-gap: 80px;
     flex-wrap: wrap;
     width: calc(var(--column-count) * var(--team-total-width));
+    justify-self: center;
+    margin-top: 10em;
 }
 
 .teams .list .team {
@@ -141,4 +137,11 @@ nav {
     flex-direction: column;
     gap: 25px;
     margin-top: 25px;
+}
+
+.sectionBg {
+    background: url("../assets/papyrus.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }

@@ -62,6 +62,7 @@ http://fr.123rf.com/ai-image-generator/
         - [x] Teams (cf screen dans la conversation)
     - Finir le style (ajouter ce qu'il manque)
         - [x] Afficher les boutons avec le style de LoL
+        - [ ] Recentrer le texte
 - [x] code bouton sur le côté (affichage de la bonne section)
 
 ## bracket
@@ -69,6 +70,7 @@ http://fr.123rf.com/ai-image-generator/
 - [x] Style specifique pour la team des Winners dans la bracket
 - [x] Couleur traits bracet dorée (couleur a revoir au dernier point avant le tournoi)
 - [IN PROGRESS] LocalStorage : Save/Get data (supporter le F5)
+- Enlever le header dans le bracket
 ## Global
 - [x] index.html doit avoir un 'big' header
 - [ ] Faire démarrer l'image de fond sous le headeur ?

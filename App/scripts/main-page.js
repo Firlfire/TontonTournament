@@ -21,19 +21,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btnProgress.addEventListener("click", (event) => {
         hideAllSections();
-        const progress = document.querySelector("section#steps");
+        const progress = document.querySelector("div#steps");
         displayCurrentSection(progress);
     })
 
     btnTeams.addEventListener("click", (event) => {
         hideAllSections();
-        const teams = document.querySelector("section#teams");
+        const teams = document.querySelector("div#teams");
         displayCurrentSection(teams);
     })
 
     btnRewards.addEventListener("click", (event) => {
         hideAllSections();
-        const rewards = document.querySelector("section#rewards");
+        const rewards = document.querySelector("div#rewards");
         displayCurrentSection(rewards);
     })
 
@@ -61,6 +61,6 @@ function displayCurrentSection(item) {
 
 function startPage() {
     hideAllSections();
-    const rules = document.querySelector("section#rules");
+    const rules = document.querySelector("div#rules");
     displayCurrentSection(rules);
 }
