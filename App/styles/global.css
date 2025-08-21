@@ -5,24 +5,29 @@
     --main-color-blue-h: 204;
     --main-color-blue-s: 29%;
     --main-color-blue-l: 30%;
-    
+
     --main-color-blue: hsl(var(--main-color-blue-h), var(--main-color-blue-s), var(--main-color-blue-l));
     --main-color-blue-dark: hsl(var(--main-color-blue-h), 50%, 15%);
     --main-color-blue-text: hsl(var(--main-color-blue-h), var(--main-color-blue-s), calc(var(--main-color-blue-l) * 1.2));
 }
 
 /* peut être modif ça, je sais pas, j'ai fait vite */
-html, body {
+html,
+body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     margin: 0;
 }
 
-body {
-    background: url("../assets/aram.jpg") no-repeat;
-    background-repeat: no-repeat;
-    background-size: 100%;
+.intro {
+    font-size: 9rem;
+    color: #dbc51b;
+}
+
+.headline {
+    font-size: 6rem;
+    color: #dbc51b;
 }
 
 .image-container {
@@ -41,6 +46,11 @@ body {
     background-color: var(--title-bg-color, var(--main-color-blue-dark));
     border: 2px solid var(--title-border-color, var(--main-color-cyan));
     color: var(--title-text-color, white);
+    margin-bottom: 10px;
+}
+
+.strike {
+    text-decoration-line: line-through;
 }
 
 /* HEADER */
@@ -63,6 +73,11 @@ body {
 
 .main-container {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 400px;
+    align-items: center;
+    justify-content: center;
 }
 
 /* BUTTON TO MAIN PAGE */
@@ -81,15 +96,18 @@ body {
 svg {
     cursor: pointer;
     transition: transform 0.15s ease, filter 0.15s ease;
-  }
-  svg:hover {
+}
+
+svg:hover {
     transform: scale(1.05);
-    filter: drop-shadow(0 0 10px rgba(0,200,214,0.7));
-  }
-  svg:active {
+    filter: drop-shadow(0 0 10px rgba(0, 200, 214, 0.7));
+}
+
+svg:active {
     transform: scale(0.97);
-  }
-  text {
+}
+
+text {
     font-family: "Cinzel", serif;
     font-weight: 900;
     font-size: 26px;
@@ -97,6 +115,6 @@ svg {
     text-anchor: middle;
     dominant-baseline: middle;
     pointer-events: none;
-  }
+}
 
 /* END BUTTON TO MAIN PAGE */

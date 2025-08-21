@@ -5,7 +5,7 @@ body {
 
 #global-container {
     --nav-menu-width: 250px;
-
+    flex: 1;
     text-align: center;
 }
 
@@ -27,7 +27,7 @@ body {
 } */
 
 .lower {
-  font-size: 0.6em;
+    font-size: 0.6em;
 }
 
 .header h6 {
@@ -52,10 +52,6 @@ nav {
     padding: 20px 0px;
     margin-left: var(--nav-menu-width);
     width: calc(100% - var(--nav-menu-width));
-    
-    background: url("../assets/papyrus.png");
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 /* Manually add in DOM for live demo */

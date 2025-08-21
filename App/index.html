@@ -7,20 +7,21 @@
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/global.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url("assets/bg-index.png") no-repeat;
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="header">
-        <link rel="stylesheet" href="../styles/header.css">
-        <div class="header-wrap">
-            <p class="intro" id="intro">Kill <strike>Steal</strike> Secure</p>
-            <h1 id="headline">Le tournoi KS des tontons</h1>
-        </div>
-    </header>
     <div class="main-container">
-        <div onclick="window.location.href='./main-page.html'" class="container-button-to-main-page">
+        <p class="intro" id="intro">Kill <span class="strike">Steal</span> Secure</p>
+        <div class="container-button-to-main-page">
             <!-- on fait confiance à google/ia pour la génération de ça -->
-            <svg width="320" height="90" viewBox="0 0 320 90">
+            <svg onclick="window.location.href='./main-page.html'" width="320" height="90" viewBox="0 0 320 90">
                 <path d="M25 0 H295 L320 45 L295 90 H25 L0 45 Z" fill="#00c8d6" />
                 <path d="M30 5 H290 L310 45 L290 85 H30 L10 45 Z" fill="url(#grad)" stroke="#d4a84f" stroke-width="2" />
                 <defs>
@@ -29,10 +30,11 @@
                         <stop offset="100%" stop-color="#132a39" />
                     </linearGradient>
                 </defs>
-                <text x="160" y="45">BAGARRE !</text>
+                <text x="160" y="47">BAGARRE !</text>
             </svg>
         </div>
-        </div>
+        <h1 class="headline" id="headline">Le tournoi KS des tontons</h1>
+    </div>
 </body>
 
 </html>
