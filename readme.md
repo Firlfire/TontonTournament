@@ -47,10 +47,10 @@ http://fr.123rf.com/ai-image-generator/
 
 # TODO - DEV
 ## index.html
-- [ ] Header au centre
+- [x] Header au centre (fixed en ne mettant pas de header mais juste du texte autour du bouton)
 - [x] Bouton vers main-page.html : style 'Match found' sur LoL
 ## main page
-- [ ] Header un peu moins haut
+- [x] Header un peu moins haut
 - HTML :
     - Bouton a gauche
         - [x] 1 par 'section' : affiche le contenu a droite
@@ -60,15 +60,17 @@ http://fr.123rf.com/ai-image-generator/
         - [x] Déroulement
         - [x] Récompenses
         - [x] Teams (cf screen dans la conversation)
+    - Finir le style (ajouter ce qu'il manque)
+        - [x] Afficher les boutons avec le style de LoL
 - [x] code bouton sur le côté (affichage de la bonne section)
-- [ ] Finir le style
+
 ## bracket
 - [x] Afficher la step suivante a la fin de la step d'avant
 - [x] Style specifique pour la team des Winners dans la bracket
 - [x] Couleur traits bracet dorée (couleur a revoir au dernier point avant le tournoi)
 - [IN PROGRESS] LocalStorage : Save/Get data (supporter le F5)
 ## Global
-- [ ] index.html doit avoir un 'big' header
+- [x] index.html doit avoir un 'big' header
 - [ ] Faire démarrer l'image de fond sous le headeur ?
 
 ## BONUS
