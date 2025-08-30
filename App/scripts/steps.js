@@ -189,10 +189,16 @@ class Step {
 
         const input = html.querySelector(".score");
         input.addEventListener("change", () => {
-            console.log(`Score change for team '${teamData.name}' : ${teamData.score} => ${input.value}`);
-            teamData.score = input.value;
-            const customEvent = this.BuildEvent(events.Score, { teamData: teamData });
-            input.dispatchEvent(customEvent);
+            const score = parseFloat(input.value);
+            if (!isNaN(score)) {
+                console.log(`Score change for team '${teamData.name}' : ${teamData.score} => ${input.value}`);
+                teamData.score = input.value;
+                const customEvent = this.BuildEvent(events.Score, { teamData: teamData });
+                input.dispatchEvent(customEvent);
+            }
+            else {
+                console.error(`Invalid score detected for team ${teamData.name} : ${input.value}`);
+            }
         });
 
         html.querySelector(".members").append(...teamData.members.map(name => {
