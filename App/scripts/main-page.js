@@ -6,61 +6,40 @@ document.addEventListener("DOMContentLoaded", function () {
         teamContainer.appendChild(teamHtml);
     });
 
-    startPage();
+    const sectionButtons = document.querySelectorAll(".btn-section");
+    sectionButtons.forEach(button => {
+        button.addEventListener("click", displaySection);
+    });
 
+    const pageButtons = document.querySelectorAll(".btn-url");
+    pageButtons.forEach(button => {
+        button.addEventListener("click", openPage);
+    });
 
-    const btnRules = document.querySelector(".btn-rules");
-    const btnProgress = document.querySelector(".btn-progress");
-    const btnTeams = document.querySelector(".btn-teams");
-    const btnRewards = document.querySelector(".btn-rewards");
-    const btnBracket = document.querySelector(".btn-bracket");
-
-    btnRules.addEventListener("click", (event) => {
-        startPage();
-    })
-
-    btnProgress.addEventListener("click", (event) => {
-        hideAllSections();
-        const progress = document.querySelector("div#steps");
-        displayCurrentSection(progress);
-    })
-
-    btnTeams.addEventListener("click", (event) => {
-        hideAllSections();
-        const teams = document.querySelector("div#teams");
-        displayCurrentSection(teams);
-    })
-
-    btnRewards.addEventListener("click", (event) => {
-        hideAllSections();
-        const rewards = document.querySelector("div#rewards");
-        displayCurrentSection(rewards);
-    })
-
-    btnBracket.addEventListener("click", () => {
-        window.location.href = "./bracket.html";
-    })
-
+    sectionButtons[0].click();
 });
 
-function hideAllSections() {
-    const sectionRules = document.querySelector("#rules");
-    const sectionProgress = document.querySelector("#steps");
-    const sectionTeams = document.querySelector("#teams");
-    const sectionRewards = document.querySelector("#rewards");
+let previousSection = null;
+function displaySection(event) {
+    if (previousSection) {
+        previousSection.style.display = "none";
+    }
 
-    sectionRules.style.display = "none";
-    sectionProgress.style.display = "none";
-    sectionTeams.style.display = "none";
-    sectionRewards.style.display = "none";
+    const element = event.currentTarget;
+    const newSectionId = element.dataset.sectionId;
+    const section = document.querySelector(`#${newSectionId}`);
+    section.style.display = "block";
+    previousSection = section;
 }
 
-function displayCurrentSection(item) {
-    item.style.display = "block";
-}
-
-function startPage() {
-    hideAllSections();
-    const rules = document.querySelector("div#rules");
-    displayCurrentSection(rules);
+const openedPages = {};
+function openPage(event) {
+    const element = event.currentTarget;
+    const page = element.dataset.pageUrl;
+    if (!openedPages[page]) {
+        openedPages[page] = window.open(page, element.dataset.pageContext || "_blank");
+        openedPages[page].addEventListener("beforeunload", () => {
+            delete openedPages[page];
+        });
+    }
 }

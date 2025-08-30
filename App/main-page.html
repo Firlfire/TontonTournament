@@ -26,7 +26,7 @@
 
     <div id="global-container">
         <nav class="list-buttons">
-            <div class="btn-rules">
+            <div class="btn-section" data-section-id="rules">
                 <svg width="320" height="90" viewBox="0 0 320 90">
                     <path d="M25 0 H295 L320 45 L295 90 H25 L0 45 Z" fill="#00c8d6" />
                     <path d="M30 5 H290 L310 45 L290 85 H30 L10 45 Z" fill="url(#grad)" stroke="#d4a84f"
@@ -41,7 +41,7 @@
                 </svg>
             </div>
 
-            <div class="btn-progress">
+            <div class="btn-section" data-section-id="steps">
                 <!-- on fait confiance à google/ia pour la génération de ça -->
                 <svg width="320" height="90" viewBox="0 0 320 90">
                     <path d="M25 0 H295 L320 45 L295 90 H25 L0 45 Z" fill="#00c8d6" />
@@ -57,7 +57,7 @@
                 </svg>
             </div>
 
-            <div class="btn-rewards">
+            <div class="btn-section" data-section-id="rewards">
                 <svg width="320" height="90" viewBox="0 0 320 90">
                     <path d="M25 0 H295 L320 45 L295 90 H25 L0 45 Z" fill="#00c8d6" />
                     <path d="M30 5 H290 L310 45 L290 85 H30 L10 45 Z" fill="url(#grad)" stroke="#d4a84f"
@@ -71,7 +71,7 @@
                     <text x="160" y="47">RÉCOMPENSES</text>
                 </svg>
             </div>
-            <div class="btn-teams">
+            <div class="btn-section" data-section-id="teams">
                 <svg width="320" height="90" viewBox="0 0 320 90">
                     <path d="M25 0 H295 L320 45 L295 90 H25 L0 45 Z" fill="#00c8d6" />
                     <path d="M30 5 H290 L310 45 L290 85 H30 L10 45 Z" fill="url(#grad)" stroke="#d4a84f"
@@ -85,7 +85,7 @@
                     <text x="160" y="47">LES ÉQUIPES</text>
                 </svg>
             </div>
-            <div class="btn-bracket">
+            <div class="btn-url" data-page-url="bracket.html" data-page-context="bracket">
                 <svg width="320" height="90" viewBox="0 0 320 90">
                     <path d="M25 0 H295 L320 45 L295 90 H25 L0 45 Z" fill="#00c8d6" />
                     <path d="M30 5 H290 L310 45 L290 85 H30 L10 45 Z" fill="url(#grad)" stroke="#d4a84f"
@@ -102,7 +102,7 @@
         </nav>
 
         <article id="container" class="sectionBg">
-            <div id="rules" class="rules">
+            <section id="rules" class="rules">
                 <div class="list">
                     <div class="rule">
                         <p class="text"><span class="important">Map ARAM</span></p>
@@ -126,9 +126,9 @@
                         <img src="./assets/fearless.png" alt="fearless" />
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div id="steps" class="steps">
+            <section id="steps" class="steps">
                 <div class="list">
                     <div class="step">
                         <div class="header">
@@ -177,18 +177,18 @@
                                 NEXUS !</span></p>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div id="rewards" class="rewards">
+            <section id="rewards" class="rewards">
 
                 <p class="text">Un skin par gagnant !*</p>
                 <p class="text">... Et des récompenses secrètes !</p>
                 <p class="text lower">*1350 RP maximum</p>
-            </div>
+            </section>
 
-            <div id="teams" class="teams">
+            <section id="teams" class="teams">
                 <div class="list"></div>
-            </div>
+            </section>
         </article>
     </div>
 </body>

@@ -68,6 +68,10 @@ nav {
     margin: 0 auto;
 }
 
+#container section {
+    display: none;
+}
+
 .rules .list .rule {
     display: flex;
     align-items: center;
