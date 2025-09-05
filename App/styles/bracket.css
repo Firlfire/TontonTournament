@@ -1,3 +1,12 @@
+body {
+    background-image: url(../assets/wall-paper-bracket.png);
+}
+
+#global-container {
+    /* Hard-coded pour le PC de Yoan en F11 */
+    margin-top: 6%;
+}
+
 #container {
     display: flex;
     align-items: center;

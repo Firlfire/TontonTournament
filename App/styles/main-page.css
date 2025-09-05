@@ -1,6 +1,11 @@
+:root {
+    --team-width: 250px;
+}
+
 body {
     height: fit-content;
-    background: none;
+    background-image: url("../assets/wall-paper.png"); /* important to override bootstrap white background */
+    background-repeat: no-repeat;
 }
 
 #global-container {
@@ -16,6 +21,10 @@ body {
     font-weight: bold;
 }
 
+.goal {
+    font-weight: bold;
+}
+
 /* h1 {
     font-family: 'Herr Von Muellerhoff';
     font-family: 'Abel';
@@ -28,7 +37,8 @@ body {
 } */
 
 .lower {
-    font-size: 0.6em;
+    font-size: 0.4em;
+    margin: 0px;
 }
 
 .header h6 {
@@ -48,10 +58,9 @@ nav {
 
 #container {
     --content-margin: calc(100% - 10px);
-
     display: inline-block;
-    padding: 20px 0px;
-    margin-left: var(--nav-menu-width);
+    padding: 60px 0px;
+    margin: 0px var(--nav-menu-width);
     width: calc(100% - var(--nav-menu-width));
 }
 
@@ -102,19 +111,27 @@ nav {
     border-radius: 25px;
 }
 
-.steps {
-    margin-left: 20em;
-    margin-right: 20em;
-}
-
-.steps .list {
+#container section.steps .list {
     display: flex;
     flex-direction: column;
     row-gap: 50px;
 }
 
-.steps .list p {
+#container section.steps .list p {
     margin: 0;
+}
+
+#container section.rewards {
+    font-family: 'Holtwood One SC';
+    font-size: 3em;
+}
+
+#container section.rewards img {
+    max-height: 230px;
+}
+
+#container section.rewards p:last-of-type {
+    margin-bottom: 20px;
 }
 
 .teams .list {
@@ -130,6 +147,14 @@ nav {
 
 .teams .list .team {
     flex-shrink: 0;
+}
+
+.team .members {
+    display: block;
+}
+
+.team .members span {
+    display: block;
 }
 
 .team .stats {

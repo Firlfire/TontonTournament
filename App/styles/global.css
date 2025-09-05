@@ -14,6 +14,9 @@
 /* peut être modif ça, je sais pas, j'ai fait vite */
 html,
 body {
+    background-image: url("../assets/bg-index.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -72,25 +75,10 @@ body {
 }
 
 .main-container {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 400px;
     align-items: center;
     justify-content: center;
-}
-
-/* BUTTON TO MAIN PAGE */
-.container-button-to-main-page {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    /* ça fonctionne mais pourquoi lol */
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 svg {
