@@ -1,7 +1,11 @@
-const enablingDate = new Date("09/13/2025 19:02");
+const prankOption = {
+    enablingDate: new Date("09/13/2025 18:05"),
+    lsKey: "KillSecureCompetition-Pranked"
+}
+
 function ArePrankEnable() {
     const devEnv = window.location.href.toLocaleLowerCase().includes("dev");
-    const enable = new Date() > enablingDate;
+    const enable = new Date() >= prankOption.enablingDate;
     return devEnv && enable;
 }
 
@@ -97,6 +101,7 @@ class Popup {
         // this.Center();
         this.container.show();
         this.contentContainer.classList.add("hidden");
+        return true;
     }
 
     SetIcon(icon) {
@@ -121,20 +126,11 @@ class Popup {
 }
 
 class PrankPopup extends Popup {
-    static opened = false;
-
     constructor(messageList) {
-        PrankPopup
         super("Le service a cessé de fonctionner");
 
         this.currentMessageIndex = -1;
-
-        // this.messages = messageList;
-        this.messages = [
-            {text: "Les devs n'ayant pas été payés, le service s'est arreté de manière... 'impromptue'.", subText: "Merci de payer pour rétablir le service." },
-            {text: "RENDS L'ARGENT" },
-            {text: "T'as pas le choix... C'est moi le dev", subText: "#hostage" },
-        ];
+        this.messages = messageList;
     }
 
     _Customize() {
@@ -174,11 +170,22 @@ class PrankPopup extends Popup {
         }
     }
 
-    Open() {
-        if (!PrankPopup.enable && ArePrankEnable()) {
-            PrankPopup.enable = true;
-            super.Open();
+    Open(useTimeout) {
+        if (ArePrankEnable()) {
+            if (!localStorage.getItem(prankOption.lsKey)) {
+                localStorage.setItem(prankOption.lsKey, true);
+                return super.Open();
+            }
         }
+        else if (useTimeout) {
+            const remainingTime = enablingDate - new Date();
+            setTimeout(() => {
+                return this.Open();
+            }, remainingTime);
+            return true;
+        }
+
+        return false;
     }
 
     Update() {

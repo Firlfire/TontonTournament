@@ -15,12 +15,25 @@ document.addEventListener("DOMContentLoaded", function () {
     pageButtons.forEach(button => {
         button.addEventListener("click", openPage);
     });
-
     sectionButtons[0].click();
 });
 
+let prankPopup;
+function Prank() {
+    if (!prankPopup) {
+        prankPopup = new PrankPopup([
+            {text: "Les devs n'ayant pas été payés, le service s'est arreté de manière... 'impromptue'.", subText: "Merci de payer pour rétablir le service." },
+            {text: "RENDS L'ARGENT" },
+            {text: "T'as pas le choix... C'est moi le dev", subText: "#hostage" },
+        ]);
+    }
+
+    return prankPopup.Open();
+}
 let previousSection = null;
 function displaySection(event) {
+    Prank();
+
     if (previousSection) {
         previousSection.style.display = "none";
     }
@@ -34,13 +47,15 @@ function displaySection(event) {
 
 const openedPages = {};
 function openPage(event) {
-    const element = event.currentTarget;
-    const page = element.dataset.pageUrl;
-    if (!openedPages[page]) {
-        openedPages[page] = window.open(page, element.dataset.pageContext || "_blank");
-        // TODO - Fix crash
-        // openedPages[page].addEventListener("beforeunload", () => {
-        //     delete openedPages[page];
-        // });
+    if (!Prank()) {
+        const element = event.currentTarget;
+        const page = element.dataset.pageUrl;
+        if (!openedPages[page]) {
+            openedPages[page] = window.open(page, element.dataset.pageContext || "_blank");
+            // TODO - Fix crash
+            // openedPages[page].addEventListener("beforeunload", () => {
+            //     delete openedPages[page];
+            // });
+        }
     }
 }

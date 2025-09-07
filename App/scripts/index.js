@@ -28,8 +28,5 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     steps[0].Start(DataManager.defaultData.teams);
 
-    // const popup = new PrankPopup("TA MERE", "POUR NAOY");
-    // popup.Open();
-
     GetAllChampionsAndIcons();
 });

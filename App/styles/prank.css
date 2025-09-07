@@ -1,6 +1,7 @@
 #popup-container {
-    max-width: 445px;
+    max-width: 400px;
     border-radius: 20px;
+    padding-bottom: 10px;
     
     #popup-header {
         display: flex;
@@ -33,9 +34,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding-top: 5px;
+        padding-top: 10px;
         border-top: black solid 2px;
         font-family: 'Holtwood One SC';
+
+        button {
+            border-radius: 20px;
+        }
     }
 }
 
