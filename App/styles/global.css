@@ -23,6 +23,19 @@ body {
     margin: 0;
 }
 
+.hidden {
+    display: none !important;
+}
+
+/* Used for live test */
+.all-font {
+    font-family: 'Herr Von Muellerhoff' !important;
+    font-family: 'Abel' !important;
+    font-family: 'Istok Web' !important;
+    font-family: 'Roboto Condensed:700' !important;
+    font-family: 'Holtwood One SC' !important;
+}
+
 .intro {
     font-size: 9rem;
     color: #dbc51b;
@@ -104,5 +117,3 @@ text {
     dominant-baseline: middle;
     pointer-events: none;
 }
-
-/* END BUTTON TO MAIN PAGE */

@@ -1,0 +1,45 @@
+#popup-container {
+    max-width: 445px;
+    border-radius: 20px;
+    
+    #popup-header {
+        display: flex;
+        border-bottom: black solid 2px;
+        font-family: 'Roboto Condensed:700';
+
+        &:has(.icon) {
+            padding-bottom: 5px;
+        }
+
+        h4 {
+            font-weight: bold;
+        }
+
+        img {
+            max-width: 77px;
+        }
+    }
+
+    #popup-body {
+        margin: 5px 0px;
+
+        p {
+            margin: 0px;
+            font-family: 'Roboto Condensed:700';
+        }
+    }
+
+    #popup-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 5px;
+        border-top: black solid 2px;
+        font-family: 'Holtwood One SC';
+    }
+}
+
+#popup-container.prank #popup-header h4 {
+    font-size: 2em;
+    margin: 0;
+}
