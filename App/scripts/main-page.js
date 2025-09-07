@@ -38,8 +38,9 @@ function openPage(event) {
     const page = element.dataset.pageUrl;
     if (!openedPages[page]) {
         openedPages[page] = window.open(page, element.dataset.pageContext || "_blank");
-        openedPages[page].addEventListener("beforeunload", () => {
-            delete openedPages[page];
-        });
+        // TODO - Fix crash
+        // openedPages[page].addEventListener("beforeunload", () => {
+        //     delete openedPages[page];
+        // });
     }
 }
