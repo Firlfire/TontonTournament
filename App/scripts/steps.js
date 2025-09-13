@@ -126,6 +126,7 @@ class Step {
         this.teamSize = teamsCount;
         this.id = Step.#totalCount++;
         this.localStorage = new DataManager(`step-${this.id}`);
+        this.fakeTeamCounter = 0;
     }
 
     // AddTeam(team) {
@@ -178,6 +179,10 @@ class Step {
                 html.dispatchEvent(customEvent);
             }
         });
+
+        // Check if match ended (score already present in team data)
+        const scoreEvent = this.BuildEvent(events.Score);
+        html.dispatchEvent(scoreEvent);
         
         return html;
     }
@@ -200,6 +205,11 @@ class Step {
                 console.error(`Invalid score detected for team ${teamData.name} : ${input.value}`);
             }
         });
+
+        if (!isNaN(teamData.score))
+        {
+            input.value = parseFloat(teamData.score);
+        }
 
         html.querySelector(".members").append(...teamData.members.map(name => {
             const element = document.createElement("span");
@@ -255,6 +265,16 @@ class Step {
         return matches;
     }
 
+    GenerateFakeTeam() {
+        const fakeTeamId = ++this.fakeTeamCounter;
+        return {
+            name: `Repêchage ${fakeTeamId}`,
+            id: this.teams.length + fakeTeamId,
+            members: [],
+            fake: true
+        };
+    }
+
     //!!\\ Refacto en cours !
     GetTeams() {
         if (!this.teams)
@@ -308,9 +328,10 @@ class Step {
         console.groupCollapsed(log);
         console.table(teams);
 
-        if (!teams || teams.length !== this.teamSize) {
-            throw new Error("The provided team list must match the team count required for this step");
-        }
+        // Allow less than max team count and fill with 'fake' teams in match builder
+        // if (!teams || teams.length !== this.teamSize) {
+        //     throw new Error("The provided team list must match the team count required for this step");
+        // }
 
         // TODO - Refacto initialization : without fake data
         this.teams = teams;
@@ -363,7 +384,7 @@ class FusionStep extends Step {
 
                 while (fusion.length < 2) {
                     const randomTeamIndex = Math.floor(Math.random() * duplicateTeams.length);
-                    const [team] = duplicateTeams.splice(randomTeamIndex, 1);
+                    const team = duplicateTeams.length ? duplicateTeams.splice(randomTeamIndex, 1)[0] : this.GenerateFakeTeam();
                     fusion.push(team);
                     // const team = shuffledTeams.pop();
                     // match.teams.push(team);
