@@ -26,7 +26,7 @@ body {
 }
 
 .lower {
-    font-size: 0.4em;
+    font-size: 0.7em;
     margin: 0px;
 }
 
@@ -113,6 +113,10 @@ nav {
 #container section.rewards {
     font-family: 'Holtwood One SC';
     font-size: 3em;
+}
+
+#container section.rewards .lower {
+    font-size: 0.4em;
 }
 
 #container section.rewards img {

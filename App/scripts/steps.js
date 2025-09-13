@@ -257,7 +257,6 @@ class Step {
 
     //!!\\ Refacto en cours !
     GetTeams() {
-
         if (!this.teams)
         {
             // TODO - Refacto intialization : without fake data - no need if step display one after one
